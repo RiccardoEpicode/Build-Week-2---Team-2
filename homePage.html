@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-dark">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,6 +64,7 @@
                     <button class="btn search-icon" type="submit">
                       <svg
                         width="20"
+                        fill="#fff"
                         data-encore-id="icon"
                         role="img"
                         aria-hidden="true"
@@ -91,9 +92,11 @@
                       <svg
                         data-encore-id="icon"
                         width="20"
+                        fill="#fff"
                         role="img"
                         aria-hidden="true"
                         class="e-91000-icon e-91000-baseline"
+                        style="margin: 0 10px"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -219,9 +222,77 @@
       </nav>
     </header>
 
+    <!-- MAIN -->
+
+    <main>
+      <div class="text-center mainContainer mx-4">
+        <div class="row no-gutters mainRow">
+          <div class="leftSide greybody">
+            <div
+              class="d-flex justify-content-between align-items-center p-2 grey-body"
+            >
+              <h4>La tua libreria</h4>
+              <div>
+                <!-- button 1 -->
+                <button class="btn rounded-5 grey fs-6 fw-bold p-1">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    width="15"
+                    fill="#686767"
+                    class="e-91000-icon e-91000-baseline yoyv1_1LPucwCXYDe5AN"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75"
+                    ></path></svg
+                  >Crea
+                </button>
+                <!-- button 2 -->
+                <button class="btn">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    width="15"
+                    fill="#686767"
+                    class="e-91000-icon e-91000-baseline"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M6.52 9.47a.75.75 0 0 1 0 1.06l-2.72 2.72h1.018a.75.75 0 0 1 0 1.5H1.25v-3.579a.75.75 0 0 1 1.5 0v1.018l2.72-2.72a.75.75 0 0 1 1.06 0zm2.94-2.94a.75.75 0 0 1 0-1.06l2.72-2.72h-1.018a.75.75 0 1 1 0-1.5h3.578v3.579a.75.75 0 0 1-1.5 0V3.81l-2.72 2.72a.75.75 0 0 1-1.06 0"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="centralPart greybody">Songs</div>
+          <div class="rightSide greybody">Attività Amici</div>
+        </div>
+      </div>
+    </main>
+
     <!-- FOOTER/PLAYER -->
 
-    <footer class="black">
+    <div class="black">
       <div class="container-fluid fixed-bottom black border-secondary">
         <div
           class="row align-items-center p-2 text-white text-center text-xxl-start"
@@ -563,7 +634,7 @@
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   </body>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
