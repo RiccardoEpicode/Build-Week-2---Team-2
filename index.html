@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify clone</title>
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/circular-font.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-xl black ">
+      <div class="container-fluid">
+        <!-- logo -->
+        <a class="navbar-brand">
+          <img src="./assets/imgs/logo.svg" alt="logo" width="100" class="logo">
+        </a>
+        
+        <!-- hamburge icon -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <div class="flex-grow-1 d-flex justify-content-end">
+            <div class="d-flex gap-2 align-items-center mx-auto">
+              <!-- home icon -->
+              <a href="#" class=" grey rounded-5 p-2"><svg fill="#fff" data-encore-id="icon" width="25" role="img"
+                  aria-hidden="true" class="e-91000-icon e-91000-baseline" viewBox="0 0 24 24">
+                  <path
+                    d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732z">
+                  </path>
+                </svg></a>
+              <!-- search -->
+              <form class="d-flex" role="search">
+                <div class="d-flex position-relative search-width">
+                  <input class="form-control me-2 border-0 rounded-5 px-5 search-padding" type="search"
+                    placeholder="Cosa vuoi ascoltare ?" aria-label="Search" />
+                  <button class="btn search-icon" type="submit"><svg width="20" fill="#fff " data-encore-id="icon"
+                      role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline MpoH5sdgCUbPL5LCl3Cy"
+                      data-testid="search-icon" viewBox="0 0 24 24"
+                      style="--encore-icon-height: var(--encore-graphic-size-decorative-larger-3); --encore-icon-width: var(--encore-graphic-size-decorative-larger-3);">
+                      <path
+                        d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z">
+                      </path>
+                    </svg></button>
+                  <button class="btn search-nav rounded-0 search-nav-border" type="submit"><svg data-encore-id="icon"
+                      width="20" fill="#fff" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline"
+                      viewBox="0 0 24 24">
+                      <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2"></path>
+                      <path
+                        d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4z">
+                      </path>
+                    </svg></button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- navbar list right side -->
+          <div>
+            <ul class="navbar-list list-unstyled d-flex gap-4 align-items-center m-0 ">
+              <li class="navbar-item"><a href="#"
+                  class="navbar-link text-decoration-none btn rounded-5 btn-light">Esplora premium</a></li>
+              <li class="navbar-item">
+                <a href="#" class="navbar-link text-decoration-none text-light"><svg data-encore-id="icon" width="20"
+                    fill="#fff" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline align-middle"
+                    viewBox="0 0 16 16"
+                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                    <path
+                      d="M4.995 8.745a.75.75 0 0 1 1.06 0L7.25 9.939V4a.75.75 0 0 1 1.5 0v5.94l1.195-1.195a.75.75 0 1 1 1.06 1.06L8 12.811l-.528-.528-.005-.005-2.472-2.473a.75.75 0 0 1 0-1.06">
+                    </path>
+                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13"></path>
+                  </svg>
+                  <span class="align-middle">Installa app</span></a>
+              </li>
+              <li class="navbar-item"><a href="#" class="navbar-link"><svg data-encore-id="icon" role="img"
+                    aria-hidden="true" width="20" fill="#fff" class="e-91000-icon e-91000-baseline" viewBox="0 0 16 16"
+                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                    <path
+                      d="M8 1.5a4 4 0 0 0-4 4v3.27a.75.75 0 0 1-.1.373L2.255 12h11.49L12.1 9.142a.75.75 0 0 1-.1-.374V5.5a4 4 0 0 0-4-4m-5.5 4a5.5 5.5 0 0 1 11 0v3.067l2.193 3.809a.75.75 0 0 1-.65 1.124H10.5a2.5 2.5 0 0 1-5 0H.957a.75.75 0 0 1-.65-1.124L2.5 8.569zm4.5 8a1 1 0 1 0 2 0z">
+                    </path>
+                  </svg></a></li>
+              <li class="navbar-item"><a href="#" class="navbar-link"><svg data-encore-id="icon" role="img"
+                    aria-hidden="true" width="20" fill="#fff" class="e-91000-icon e-91000-baseline" viewBox="0 0 16 16"
+                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                    <path
+                      d="M3.849 10.034c-.021-.465.026-.93.139-1.381H1.669c.143-.303.375-.556.665-.724l.922-.532a1.63 1.63 0 0 0 .436-2.458 1.8 1.8 0 0 1-.474-1.081q-.014-.287.057-.563a1.12 1.12 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0q.225.1.392.281c.108.12.188.263.237.417q.074.276.057.561a1.8 1.8 0 0 1-.475 1.084 1.6 1.6 0 0 0-.124 1.9c.36-.388.792-.702 1.272-.927v-.015c.48-.546.768-1.233.821-1.958a3.2 3.2 0 0 0-.135-1.132 2.657 2.657 0 0 0-5.04 0c-.111.367-.157.75-.135 1.133.053.724.341 1.41.821 1.955A.13.13 0 0 1 2.565 6a.13.13 0 0 1-.063.091l-.922.532A3.2 3.2 0 0 0-.004 9.396v.75h3.866c.001-.033-.01-.071-.013-.112m10.568-3.4-.922-.532a.13.13 0 0 1-.064-.091.12.12 0 0 1 .028-.1c.48-.546.768-1.233.821-1.958a3.3 3.3 0 0 0-.135-1.135A2.64 2.64 0 0 0 12.7 1.233a2.67 2.67 0 0 0-3.042.64 2.65 2.65 0 0 0-.554.948c-.11.367-.156.75-.134 1.133.053.724.341 1.41.821 1.955.005.006 0 .011 0 .018.48.225.911.54 1.272.927a1.6 1.6 0 0 0-.125-1.907 1.8 1.8 0 0 1-.474-1.081q-.015-.287.057-.563a1.12 1.12 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0q.225.1.392.281.162.182.236.413c.05.184.07.375.058.565a1.8 1.8 0 0 1-.475 1.084 1.633 1.633 0 0 0 .438 2.456l.922.532c.29.169.52.421.664.724h-2.319c.113.452.16.918.139 1.383 0 .04-.013.078-.017.117h3.866v-.75a3.2 3.2 0 0 0-1.58-2.778v.004zm-3.625 6-.922-.532a.13.13 0 0 1-.061-.144.1.1 0 0 1 .025-.047 3.33 3.33 0 0 0 .821-1.958 3.2 3.2 0 0 0-.135-1.132 2.657 2.657 0 0 0-5.041 0c-.11.367-.156.75-.134 1.133.053.724.341 1.41.821 1.955a.13.13 0 0 1 .028.106.13.13 0 0 1-.063.091l-.922.532a3.2 3.2 0 0 0-1.584 2.773v.75h8.75v-.75a3.2 3.2 0 0 0-1.583-2.781zm-5.5 2.023c.143-.303.375-.556.665-.724l.922-.532a1.63 1.63 0 0 0 .436-2.458 1.8 1.8 0 0 1-.474-1.081q-.015-.287.057-.563a1.12 1.12 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0q.225.1.392.281c.108.12.188.263.237.417q.073.276.057.561a1.8 1.8 0 0 1-.475 1.084 1.632 1.632 0 0 0 .438 2.456l.922.532c.29.169.52.421.664.724z">
+                    </path>
+                  </svg></a></li>
+              <li class="navbar-item"><a href="#" class="navbar-link"><img aria-hidden="false" draggable="false"
+                    loading="eager"
+                    src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1703115100202045&amp;height=50&amp;width=50&amp;ext=1761125984&amp;hash=AT_R1OuO_uNvlZRPB0A34al1"
+                    alt="Dobri_dobrev" width="40"
+                    class="LBM25IAoFtd0wh7k3EGM Xgnpn7u01MvGEhekIGLT PgTMmU2Gn7AESFMYhw4i rounded-5"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- main -->
+  <main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+  <!-- footer -->
+  <footer>
+
+  </footer>
+  <script src="./assets/js/home.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
