@@ -1,0 +1,22 @@
+.textColor {
+  color: white;
+}
+
+/* MEDIA QUERIES */
+
+/* FOOTE/PLAYER */
+
+@media (max-width: 550px) {
+  .extra-icons img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .extra-icons {
+    gap: 0.3rem !important;
+  }
+
+  .extra-icons input[type="range"] {
+    width: 60% !important;
+  }
+}
