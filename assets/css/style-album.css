@@ -132,6 +132,7 @@ body {
   height: 50px;
   background-color: #3be477;
   border-radius: 50% !important;
+  border: none;
 }
 .title-album {
   font-weight: 900;
