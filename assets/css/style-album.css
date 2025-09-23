@@ -1,0 +1,158 @@
+/* base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Circular";
+  color: #333;
+  overflow-y: hidden;
+}
+
+/* navigation */
+
+.search-icon {
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+
+.search-nav {
+  position: absolute;
+  padding-top: 0;
+  padding-bottom: 0;
+  top: 10px;
+  right: 8px;
+}
+
+.search-nav-border {
+  border-left: 1px solid #c9c3c3 !important;
+}
+
+.search-width {
+  width: 30rem;
+}
+
+.search-padding {
+  padding: 12px 0;
+}
+
+/* colors */
+
+.black {
+  background-color: black;
+}
+
+.grey {
+  background-color: #282828;
+}
+.greybody {
+  background-color: #121212;
+}
+
+.text-color {
+  color: #b5b5b5;
+}
+
+.grey-light {
+  color: #686767;
+}
+/* end colors */
+
+/* custom font size */
+.fs-7 {
+  font-size: 14px;
+}
+
+/* left side playlist */
+.playlist-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 62vh;
+}
+
+/* right side playlist */
+.playlist-container-right {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 82vh;
+}
+
+/* position absolute customised */
+.absolute-artist-title {
+  font-size: 1.05rem;
+  position: absolute;
+  color: white;
+  top: 20px;
+  left: 10px;
+  font-weight: bold;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* border radius 50% */
+.perfect-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% !important;
+}
+
+/* progress bar volume*/
+
+.progress-bar-volume {
+  width: 93px;
+  height: 4px;
+}
+
+/* progress bar song */
+.progress-bar-song {
+  width: 555px;
+  height: 4px;
+}
+
+.sidebar-container {
+  max-width: 323px;
+}
+/* Album */
+.padding-header {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.artist-info {
+  font-size: 14px;
+  font-weight: 500;
+  span {
+    color: #b5b5b5;
+    font-weight: 200;
+  }
+}
+.perfect-circle-album {
+  width: 50px;
+  height: 50px;
+  background-color: #3be477;
+  border-radius: 50% !important;
+}
+.title-album {
+  font-weight: 900;
+}
+.clock {
+  margin-right: 3.5rem;
+}
+hr {
+  opacity: 0.1;
+}
+.glass-card {
+  backdrop-filter: blur(12px) saturate(152%);
+  -webkit-backdrop-filter: blur(12px) saturate(152%);
+  background-color: rgba(0, 0, 0, 0.51);
+}
+.background-center {
+  background: linear-gradient(
+    360deg,
+    rgba(18, 18, 18, 1) 0%,
+    rgba(89, 5, 5, 1) 77%,
+    rgba(156, 0, 0, 1) 94%,
+    rgba(212, 19, 34, 1) 100%
+  );
+}
