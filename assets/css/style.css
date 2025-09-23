@@ -1,51 +1,28 @@
-/* base */
+/* ===============================
+   RESET & GLOBAL
+=================================*/
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Circular";
-  color: #333;
-  overflow-y: hidden;
+  font-family: "Circular", sans-serif;
+  color: #fff;
+  background-color: #000;
+  overflow-y: hidden; /* EVITA DOPPIO SCROLL */
 }
 
-/* navigation */
-
-.search-icon {
-  position: absolute;
-  top: 4px;
-  left: 0;
-}
-
-.search-nav {
-  position: absolute;
-  padding-top: 0;
-  padding-bottom: 0;
-  top: 10px;
-  right: 8px;
-}
-
-.search-nav-border {
-  border-left: 1px solid #c9c3c3 !important;
-}
-
-.search-width {
-  width: 30rem;
-}
-
-.search-padding {
-  padding: 12px 0;
-}
-
-/* colors */
-
+/* ===============================
+   COLORI & TESTI
+=================================*/
 .black {
-  background-color: black;
+  background-color: #000 !important;
 }
 
 .grey {
   background-color: #282828;
 }
+
 .greybody {
   background-color: #121212;
 }
@@ -57,28 +34,80 @@ body {
 .grey-light {
   color: #686767;
 }
-/* end colors */
 
-/* custom font size */
+/* ===============================
+   FONT SIZE CUSTOM
+=================================*/
 .fs-7 {
   font-size: 14px;
 }
 
-/* left side playlist */
-.playlist-container {
+/* ===============================
+   SEARCH BAR
+=================================*/
+.search-width {
+  width: 30rem;
+}
+
+.search-padding {
+  padding: 12px 0;
+}
+
+.search-icon {
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+
+.search-nav {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  padding: 0;
+}
+
+.search-nav-border {
+  border-left: 1px solid #c9c3c3;
+}
+
+/* ===============================
+   MAIN
+=================================*/
+.mainRow {
+  display: flex;
+  gap: 10px;
+}
+
+.leftSide,
+.centralPart,
+.rightSide {
+  height: calc(100vh - 100px);
+  overflow-y: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
+}
+
+.marginBottom {
+  margin-bottom: 50vh;
+}
+
+/* ===============================
+   SIDEBAR PLAYLISTS
+=================================*/
+.playlist-container {
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 63vh;
 }
 
-/* right side playlist */
 .playlist-container-right {
+  overflow-y: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
   height: 82vh;
 }
 
-/* position absolute customised */
+/* ===============================
+   ARTIST HEADER
+=================================*/
 .absolute-artist-title {
   font-size: 1.05rem;
   position: absolute;
@@ -89,22 +118,76 @@ body {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* border radius 50% */
+/* ===============================
+   FOOTER / PLAYER
+=================================*/
+.extra-icons {
+  gap: 0.5rem;
+}
+
+.extra-icons input[type="range"] {
+  width: 120px;
+}
+
+/* PROGRESS BAR VOLUME */
+.progress-bar-volume {
+  width: 93px;
+  height: 4px;
+}
+
+/* PROGRESS BAR SONG */
+.progress-bar-song {
+  width: 555px;
+  height: 4px;
+}
+
+/* ===============================
+   UTILS
+=================================*/
 .perfect-circle {
   width: 30px;
   height: 30px;
   border-radius: 50% !important;
 }
 
-/* progress bar volume*/
-
-.progress-bar-volume {
-  width: 93px;
-  height: 4px;
+.marginBottom {
+  margin-bottom: 50vh;
 }
 
-/* progress bar song */
-.progress-bar-song {
-  width: 555px;
-  height: 4px;
+/* LISTA CANZONI → CURSOR POINTER E HOVER */
+#songs-list div {
+  cursor: pointer;
+}
+#songs-list div:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ===============================
+   MEDIA QUERIES
+=================================*/
+@media (max-width: 550px) {
+  .extra-icons img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .extra-icons {
+    gap: 0.3rem !important;
+  }
+
+  .extra-icons input[type="range"] {
+    width: 60% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .extra-icons input[type="range"] {
+    width: 150px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .extra-icons input[type="range"] {
+    width: 200px;
+  }
 }

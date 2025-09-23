@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artist Page</title>
+    <title>Spotify Clone - Artist</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/artist.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
@@ -43,7 +42,7 @@
             <div class="flex-grow-1 d-flex justify-content-end">
               <div class="d-flex gap-2 align-items-center mx-auto">
                 <!-- home icon -->
-                <a href="#" class="grey rounded-5 p-2"
+                <a href="./homePage.html" class="grey rounded-5 p-2"
                   ><svg
                     fill="#fff"
                     data-encore-id="icon"
@@ -555,11 +554,11 @@
             ></div>
 
             <div class="artist-header text-center">
-              <!-- Qui JS inserisce immagine e info artista -->
+              <!-- Inserimento imamgine ed info artista-->
             </div>
 
             <div id="songs-list" class="marginBottom">
-              <!-- Qui JS inserisce le tracce -->
+              <!-- Inserimento tracce -->
             </div>
           </div>
         </div>
@@ -699,13 +698,16 @@
             class="col-12 col-xxl-3 d-flex align-items-center justify-content-center justify-content-xxl-start mb-2 mb-xxl-0"
           >
             <img
+              id="player-cover"
               src="./assets/imgs/main/image-11.jpg"
               class="img-thumbnail me-2"
               style="width: 50px; height: 50px"
             />
             <div class="me-2">
-              <h6 class="mb-0">Song Title</h6>
-              <small class="text-secondary">Artist Name</small>
+              <h6 id="player-title" class="mb-0">Song Title</h6>
+              <small id="player-artist" class="text-secondary"
+                >Artist Name</small
+              >
             </div>
             <button class="btn btn-sm ms-2">
               <svg
