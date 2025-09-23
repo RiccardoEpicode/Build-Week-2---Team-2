@@ -65,12 +65,19 @@ body {
   font-size: 14px;
 }
 
+/* sidebars container */
+.sidebar-container{
+  max-width: 323px;
+}
+
 /* left side playlist */
 .playlist-container{
   overflow-x: hidden;
   overflow-y: scroll;
   height: 62vh;
 }
+
+/* center coulmn */
 
 /* right side playlist */
 .playlist-container-right{
