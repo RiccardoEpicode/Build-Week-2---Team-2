@@ -50,63 +50,61 @@ body {
   background-color: #121212;
 }
 
-.text-color{
-  color:#B5B5B5;
+.text-color {
+  color: #b5b5b5;
 }
 
-.grey-light{
+.grey-light {
   color: #686767;
 }
 /* end colors */
 
-
 /* custom font size */
-.fs-7{
+.fs-7 {
   font-size: 14px;
 }
 
 /* left side playlist */
-.playlist-container{
+.playlist-container {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 62vh;
+  height: 63vh;
 }
 
 /* right side playlist */
-.playlist-container-right{
+.playlist-container-right {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 82vh;
 }
 
 /* position absolute customised */
-.absolute-artist-title{
+.absolute-artist-title {
   font-size: 1.05rem;
-  position:absolute;
+  position: absolute;
   color: white;
   top: 20px;
   left: 10px;
   font-weight: bold;
-  text-shadow: 0 4px 8px rgba(0,0,0, .25);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-
 /* border radius 50% */
-.perfect-circle{
-  width:30px;
+.perfect-circle {
+  width: 30px;
   height: 30px;
   border-radius: 50% !important;
 }
 
 /* progress bar volume*/
 
-.progress-bar-volume{
-  width:93px;
-  height:4px;
+.progress-bar-volume {
+  width: 93px;
+  height: 4px;
 }
 
 /* progress bar song */
-.progress-bar-song{
-  width:555px;
-  height:4px;
+.progress-bar-song {
+  width: 555px;
+  height: 4px;
 }

@@ -228,10 +228,12 @@
     </header>
 
     <!-- MAIN -->
+
     <main class="container-fluid text-white">
       <!-- column left -->
+
       <div class="row">
-        <div class="col-2 fixed vh-100">
+        <div class="col-2 leftSide">
           <div class="greybody rounded-2">
             <div
               class="d-flex grey-body justify-content-between align-items-center p-3 mb-1"
@@ -545,21 +547,26 @@
 
         <!-- column center -->
 
-        <!-- Artist content -->
-        <div class="centralPart greybody p-4">
-          <div class="artist-header text-center mb-4">
-            <!-- Qui JS inserisce immagine e info artista -->
-          </div>
+        <div class="col-8 centralPart greybody">
+          <div class="greybody rounded-2">
+            <div
+              id="results-container"
+              class="d-flex flex-wrap justify-content-start"
+            ></div>
 
-          <h4 class="mb-3">Popular</h4>
-          <div id="songs-list">
-            <!-- Qui JS inserisce le tracce -->
+            <div class="artist-header text-center">
+              <!-- Qui JS inserisce immagine e info artista -->
+            </div>
+
+            <div id="songs-list" class="marginBottom">
+              <!-- Qui JS inserisce le tracce -->
+            </div>
           </div>
         </div>
 
         <!-- column right -->
 
-        <div class="col-2 fixed vh-100">
+        <div class="col-2 rightSide">
           <div class="greybody rounded-2 playlist-container-right">
             <div
               class="d-flex grey-body justify-content-between align-items-center p-2"

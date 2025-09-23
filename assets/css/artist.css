@@ -104,17 +104,14 @@ body {
   gap: 10px;
 }
 
-.leftSide {
-  flex: 0 0 18%;
-  background-color: #121212;
-}
-
-.centralPart {
-  flex: 1;
-  background-color: #121212;
-}
-
+.leftSide,
+.centralPart,
 .rightSide {
-  flex: 0 0 18%;
-  background-color: #121212;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.marginBottom {
+  margin-bottom: 50vh;
 }
