@@ -120,7 +120,11 @@ a{
 /* home cards */
 
 .gradient-color {
-  background: linear-gradient(to bottom, #7c2d00, #121212);
+  background: linear-gradient(
+    to bottom,
+    #b33f00 0%,   
+    #121212 100%  
+  );
 }
 
 .scroll-row {
@@ -209,7 +213,7 @@ a{
 
 /* footer */
 
-.bottom-links a{
+.bottom-links a, p{
   font-size: 14px;
 }
 
