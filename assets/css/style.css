@@ -1,10 +1,12 @@
 * {
   box-sizing: border-box;
+
 }
 
 body {
   font-family: "Circular";
   color: #333;
+  overflow-y: hidden;
 }
 
 .search-icon {
@@ -33,6 +35,8 @@ body {
   padding: 12px 0;
 }
 
+/* colori */
+
 .black {
   background-color: black;
 }
@@ -43,4 +47,45 @@ body {
 .greybody {
   background-color: #121212;
 }
+
+.text-color{
+  color:#B5B5B5;
+}
+
+.grey-light{
+  color: #686767;
+}
+
+/* end colors */
+
+.fs-7{
+  font-size: 14px;
+}
+
+
+.playlist-container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 62vh;
+}
+
+
+.playlist-container-right{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 82vh;
+}
+
+
+.absolute-artist-title{
+  font-size: 1.05rem;
+  position:absolute;
+  color: white;
+  top: 20px;
+  left: 10px;
+  font-weight: bold;
+  text-shadow: 0 4px 8px rgba(0,0,0, .25);
+}
+
+
 
