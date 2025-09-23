@@ -1,4 +1,3 @@
-// Quando la pagina è pronta
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
 
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Headers RapidAPI
   const options = {
     method: "GET",
     headers: {
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // Se arrivo da ?name=cercato → risolvo l'id
   if (!artistId && artistName) {
     fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistName}`,
@@ -50,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// FUNZIONE → carica artista e top songs
+// FUNZIONE
 function loadArtist(artistId, artistName, options) {
   const artistHeader = document.querySelector(".artist-header");
   const songsList = document.getElementById("songs-list");
@@ -72,13 +69,12 @@ function loadArtist(artistId, artistName, options) {
         <p>${data.nb_fan.toLocaleString()} followers</p>
       `;
 
-      // Dopo info artista, carico canzoni
       loadTopSongs(artistId, data.name, options, songsList);
     })
     .catch((err) => console.error("❌ Errore artista:", err));
 }
 
-// TOP SONGS + fallback
+// TOP SONGS
 function loadTopSongs(artistId, artistName, options, songsList) {
   fetch(
     `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/top?limit=5`,
@@ -88,7 +84,7 @@ function loadTopSongs(artistId, artistName, options, songsList) {
     .then((data) => {
       console.log("🎵 Top songs API:", data);
 
-      songsList.innerHTML = ""; // pulisco la lista
+      songsList.innerHTML = "";
 
       if (!data.data || data.data.length === 0) {
         console.warn("⚠️ Nessuna top song trovata, passo a search...");
@@ -103,7 +99,7 @@ function loadTopSongs(artistId, artistName, options, songsList) {
     });
 }
 
-// FALLBACK con /search
+// FALLBACK
 function fallbackSearchSongs(artistName, options, songsList) {
   fetch(
     `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistName}`,
