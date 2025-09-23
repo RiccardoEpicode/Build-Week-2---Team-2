@@ -8,7 +8,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./home.css" />
+    <link rel="stylesheet" href="./assets/css/artist.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <!-- HEADER -->
@@ -18,7 +19,12 @@
         <div class="container-fluid">
           <!-- logo -->
           <a class="navbar-brand">
-            <img src="./Public/logo.svg" alt="logo" width="100" class="logo" />
+            <img
+              src="./assets/imgs/logo.svg"
+              alt="logo"
+              width="100"
+              class="logo"
+            />
           </a>
 
           <!-- hamburge icon -->
@@ -222,29 +228,454 @@
     </header>
 
     <!-- MAIN -->
-    <main>
-      <div class="text-center mainContainer mx-4">
-        <div class="row no-gutters mainRow">
-          <!-- Sidebar -->
-          <div class="leftSide greybody">
-            <h4 class="p-2">La tua libreria</h4>
-          </div>
-
-          <!-- Artist content -->
-          <div class="centralPart greybody p-4">
-            <div class="artist-header text-center mb-4">
-              <!-- Qui JS inserisce immagine e info artista -->
+    <main class="container-fluid text-white">
+      <!-- column left -->
+      <div class="row">
+        <div class="col-2 fixed vh-100">
+          <div class="greybody rounded-2">
+            <div
+              class="d-flex grey-body justify-content-between align-items-center p-3 mb-1"
+            >
+              <h4 class="m-0 fs-6">La tua libreria</h4>
+              <div class="d-flex gap-2">
+                <!-- button 1 -->
+                <button
+                  class="btn d-flex align-items-center grey rounded-5 fs-7 fw-semi-bold gap-2 px-2 py-1"
+                >
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    width="15"
+                    fill="#686767"
+                    class="e-91000-icon e-91000-baseline yoyv1_1LPucwCXYDe5AN"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75"
+                    ></path>
+                  </svg>
+                  <!-- span crea -->
+                  <span class="pe-2">Crea</span>
+                </button>
+                <!-- button 2 -->
+                <button class="btn">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    width="15"
+                    fill="#686767"
+                    class="e-91000-icon e-91000-baseline"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M6.52 9.47a.75.75 0 0 1 0 1.06l-2.72 2.72h1.018a.75.75 0 0 1 0 1.5H1.25v-3.579a.75.75 0 0 1 1.5 0v1.018l2.72-2.72a.75.75 0 0 1 1.06 0zm2.94-2.94a.75.75 0 0 1 0-1.06l2.72-2.72h-1.018a.75.75 0 1 1 0-1.5h3.578v3.579a.75.75 0 0 1-1.5 0V3.81l-2.72 2.72a.75.75 0 0 1-1.06 0"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
             </div>
 
-            <h4 class="mb-3">Popular</h4>
-            <div id="songs-list">
-              <!-- Qui JS inserisce le tracce -->
+            <!-- Buttons playlist, artist -->
+            <div class="d-flex fs-6 gap-2 p-2 mb-2">
+              <button class="grey border-0 rounded-5 px-3 py-1">
+                Playlist
+              </button>
+              <button class="grey border-0 rounded-5 px-3 py-1">Artisti</button>
+            </div>
+
+            <!-- search and playlist -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <!-- search button -->
+              <button class="btn border-0">
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  width="20"
+                  fill="#686767"
+                  aria-hidden="true"
+                  class="e-91000-icon e-91000-baseline AFy8ta8zNE0nUMR7Dwdk"
+                  viewBox="0 0 16 16"
+                  style="
+                    --encore-icon-height: var(
+                      --encore-graphic-size-decorative-smaller
+                    );
+                    --encore-icon-width: var(
+                      --encore-graphic-size-decorative-smaller
+                    );
+                  "
+                >
+                  <path
+                    d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5M.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7"
+                  ></path>
+                </svg>
+              </button>
+              <!-- button recents -->
+              <button class="btn border-0 me-2">
+                <span class="grey-light pe-1">Recenti</span>
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  width="20"
+                  fill="#686767"
+                  aria-hidden="true"
+                  class="e-91000-icon e-91000-baseline e-91000-icon--auto-mirror"
+                  viewBox="0 0 16 16"
+                  style="
+                    --encore-icon-height: var(
+                      --encore-graphic-size-decorative-smaller
+                    );
+                    --encore-icon-width: var(
+                      --encore-graphic-size-decorative-smaller
+                    );
+                  "
+                >
+                  <path
+                    d="M15 14.5H5V13h10zm0-5.75H5v-1.5h10zM15 3H5V1.5h10zM3 3H1V1.5h2zm0 11.5H1V13h2zm0-5.75H1v-1.5h2z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <!-- playlist -->
+            <!-- first song -->
+            <div class="playlist-container py-4">
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- second song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-3.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- thirdsong -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-4.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- fourth song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-5.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+
+              <!-- prova ___________________________________________________________________________________________________ -->
+
+              <!-- first song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- second song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-3.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- thirdsong -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-4.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- fourth song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-5.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+
+              <!-- first song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-2.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- second song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-3.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- thirdsong -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-4.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
+              <!-- fourth song -->
+              <div class="d-flex align-items-center gap-3 ps-2 mb-2">
+                <img
+                  src="./assets/imgs/main/image-5.jpg"
+                  class="rounded-1"
+                  width="48"
+                  height="48"
+                  alt="brano"
+                  title="playlist"
+                />
+                <div>
+                  <h6 class="m-0">Hot Pink</h6>
+                  <p class="grey-light m-0">Playlist • <span>9</span> brani</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Right Sidebar -->
-          <div class="rightSide greybody">
-            <h4 class="p-2">Attività Amici</h4>
+        <!-- column center -->
+
+        <!-- Artist content -->
+        <div class="centralPart greybody p-4">
+          <div class="artist-header text-center mb-4">
+            <!-- Qui JS inserisce immagine e info artista -->
+          </div>
+
+          <h4 class="mb-3">Popular</h4>
+          <div id="songs-list">
+            <!-- Qui JS inserisce le tracce -->
+          </div>
+        </div>
+
+        <!-- column right -->
+
+        <div class="col-2 fixed vh-100">
+          <div class="greybody rounded-2 playlist-container-right">
+            <div
+              class="d-flex grey-body justify-content-between align-items-center p-2"
+            >
+              <h4 class="m-0 fs-6">Mix Genere Musicale</h4>
+              <div class="d-flex gap-2">
+                <!-- button 1 -->
+                <button class="btn d-flex align-items-center px-2 py-1">
+                  <svg
+                    data-encore-id="icon"
+                    width="15"
+                    fill="#686767"
+                    role="img"
+                    aria-hidden="true"
+                    class="e-91000-icon e-91000-baseline"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M3 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m6.5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M16 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
+                    ></path>
+                  </svg>
+                </button>
+                <!-- button 2 -->
+                <button class="btn">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    width="15"
+                    fill="#686767"
+                    class="e-91000-icon e-91000-baseline"
+                    viewBox="0 0 16 16"
+                    style="
+                      --encore-icon-height: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                      --encore-icon-width: var(
+                        --encore-graphic-size-decorative-smaller
+                      );
+                    "
+                  >
+                    <path
+                      d="M6.52 9.47a.75.75 0 0 1 0 1.06l-2.72 2.72h1.018a.75.75 0 0 1 0 1.5H1.25v-3.579a.75.75 0 0 1 1.5 0v1.018l2.72-2.72a.75.75 0 0 1 1.06 0zm2.94-2.94a.75.75 0 0 1 0-1.06l2.72-2.72h-1.018a.75.75 0 1 1 0-1.5h3.578v3.579a.75.75 0 0 1-1.5 0V3.81l-2.72 2.72a.75.75 0 0 1-1.06 0"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- right side container -->
+            <div class="d-flex flex-column px-3 py-1">
+              <img
+                src="./assets/imgs/main/image-14.jpg"
+                class="rounded-2"
+                alt="foto"
+              />
+              <div class="my-1">
+                <a href="#" class="fs-4 text-white">Pain Jane Remix (Feat)</a>
+                <p class="m-0">
+                  <a href="#" class="text-decoration-none text-color"
+                    >Apa Ferg</a
+                  >
+                </p>
+              </div>
+            </div>
+            <!-- artist card -->
+            <div class="p-3 mb-3">
+              <div class="card border-0 grey">
+                <div class="position-relative">
+                  <img
+                    src="./assets/imgs/main/image-12.jpg"
+                    class="card-img-top"
+                    alt="image artist"
+                  />
+                  <span class="absolute-artist-title"
+                    >Informazioni sull'artista</span
+                  >
+                </div>
+                <div class="card-body px-2 py-3">
+                  <h6 class="card-title">
+                    <a href="#" class="text-decoration-none text-white"
+                      >A$AP Ferg</a
+                    >
+                  </h6>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <p class="m-0 text-color">10.270.426</p>
+                      <p class="m-0 text-color">ascoltatori mensili</p>
+                    </div>
+                    <!-- link -->
+                    <div>
+                      <a
+                        href="#"
+                        class="btn btn-outline-secondary rounded-5 px-3 py-1 text-white"
+                        >Segui</a
+                      >
+                    </div>
+                  </div>
+                  <!-- description -->
+                  <p class="card-text mt-2 text-color">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card’s content.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -261,7 +692,7 @@
             class="col-12 col-xxl-3 d-flex align-items-center justify-content-center justify-content-xxl-start mb-2 mb-xxl-0"
           >
             <img
-              src=""
+              src="./assets/imgs/main/image-11.jpg"
               class="img-thumbnail me-2"
               style="width: 50px; height: 50px"
             />
@@ -596,7 +1027,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="./artist.js"></script>
+    <script src="./assets/js/artist.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
