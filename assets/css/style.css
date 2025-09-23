@@ -1,6 +1,6 @@
+/* base */
 * {
   box-sizing: border-box;
-
 }
 
 body {
@@ -8,6 +8,8 @@ body {
   color: #333;
   overflow-y: hidden;
 }
+
+/* navigation */
 
 .search-icon {
   position: absolute;
@@ -35,7 +37,7 @@ body {
   padding: 12px 0;
 }
 
-/* colori */
+/* colors */
 
 .black {
   background-color: black;
@@ -55,28 +57,29 @@ body {
 .grey-light{
   color: #686767;
 }
-
 /* end colors */
 
+
+/* custom font size */
 .fs-7{
   font-size: 14px;
 }
 
-
+/* left side playlist */
 .playlist-container{
   overflow-x: hidden;
   overflow-y: scroll;
   height: 62vh;
 }
 
-
+/* right side playlist */
 .playlist-container-right{
   overflow-x: hidden;
   overflow-y: scroll;
   height: 82vh;
 }
 
-
+/* position absolute customised */
 .absolute-artist-title{
   font-size: 1.05rem;
   position:absolute;
@@ -88,4 +91,22 @@ body {
 }
 
 
+/* border radius 50% */
+.perfect-circle{
+  width:30px;
+  height: 30px;
+  border-radius: 50% !important;
+}
 
+/* progress bar volume*/
+
+.progress-bar-volume{
+  width:93px;
+  height:4px;
+}
+
+/* progress bar song */
+.progress-bar-song{
+  width:555px;
+  height:4px;
+}
