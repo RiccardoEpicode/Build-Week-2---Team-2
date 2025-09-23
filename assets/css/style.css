@@ -22,7 +22,7 @@ body {
 }
 
 .search-nav-border {
-  border-left: 1px solid #c9c3c3;
+  border-left: 1px solid #c9c3c3 !important;
 }
 
 .search-width {
@@ -43,3 +43,4 @@ body {
 .greybody {
   background-color: #121212;
 }
+

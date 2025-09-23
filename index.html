@@ -60,15 +60,16 @@
                       d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732z"
                     ></path></svg
                 ></a>
-                <!-- search -->
+                <!-- search  form -->
                 <form class="d-flex" role="search">
                   <div class="d-flex position-relative search-width">
-                    <input
+                    <input id="search"
                       class="form-control me-2 border-0 rounded-5 px-5 search-padding"
                       type="search"
                       placeholder="Cosa vuoi ascoltare ?"
                       aria-label="Search"
                     />
+                    <!-- button search icon -->
                     <button class="btn search-icon" type="submit">
                       <svg
                         width="20"
@@ -93,6 +94,7 @@
                         ></path>
                       </svg>
                     </button>
+                    <!-- button search navigation icon -->
                     <button
                       class="btn search-nav rounded-0 search-nav-border"
                       type="submit"
@@ -230,14 +232,15 @@
     </header>
     <!-- main -->
     <main class="container-fluid text-white">
+      <!-- column left -->
       <div class="row">
         <div class="col-2">
           <div class="greybody rounded-2">
-            <div class="d-flex justify-content-between align-items-center p-2 grey-body">
+            <div class="d-flex grey-body justify-content-between align-items-center p-3 mb-1 ">
               <h4 class="m-0 fs-6">La tua libreria</h4>
-              <div>
+              <div class="d-flex gap-2">
                 <!-- button 1 -->
-                <button class="btn rounded-5 grey fs-6 fw-bold p-1">
+                <button class="btn d-flex grey rounded-5 fs-6 fw-semi-bold gap-2 px-2">
                   <svg
                     data-encore-id="icon"
                     role="img"
@@ -258,7 +261,9 @@
                     <path
                       d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75"
                     ></path></svg
-                  >Crea
+                  >
+                  <!-- span crea -->
+                  <span class="pe-2">Crea</span>
                 </button>
                 <!-- button 2 -->
                 <button class="btn ">
@@ -286,13 +291,21 @@
                 </button>
               </div>
             </div>
+
+            <!-- Buttons playlist, artist -->
+             <div class="d-flex fs-6 gap-2 p-2 mb-2" >
+              <button class=" grey border-0 rounded-5 px-3 py-1">Playlist</button>
+              <button class=" grey border-0 rounded-5 px-3 py-1">Artisti</button>
+             </div>
           </div>
         </div>
+        <!-- column center -->
         <div class="col-8">
           <div class="greybody rounded-2">
             <h1>Illegal</h1>
           </div>
         </div>
+        <!-- column right -->
         <div class="col-2">
           <div class="greybody rounded-2">
             <h4 class="m-0 fs-6">Attività amici</h4 class="m-0 fs-6">
