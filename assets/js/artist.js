@@ -196,19 +196,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =========== FUNZIONE RENDER SONGS ====================
-
   function renderSongs(tracks) {
     songsList.innerHTML = "";
 
-    // =========== TITOLO SEZIONE ====================
-
+    // ======== TITOLO SEZIONE =========
     const title = document.createElement("h4");
     title.classList.add("mb-3");
     title.textContent = "Popular";
     songsList.appendChild(title);
 
-    // =========== LOOP SU OGNI CANZONE ====================
+    // ======== AUDIO PLAYER E PULSANTE =========
+    const audio = document.getElementById("audio-player");
+    const playButton = document.getElementById("playSong");
+    const currentTimeEl = document.getElementById("current-time");
+    const totalTimeEl = document.getElementById("total-time");
+    const progressBar = document.getElementById("progress-bar");
 
+    let currentTrackDuration = 0;
+
+    // ======== LOOP CANZONI =========
     tracks.forEach((track, i) => {
       const row = document.createElement("div");
       row.classList.add(
@@ -222,32 +228,89 @@ document.addEventListener("DOMContentLoaded", () => {
       row.style.cursor = "pointer";
 
       row.innerHTML = `
-        <div class="d-flex align-items-center">
-          <p class="me-4 fw-bold">${i + 1}</p>
-          <img src="${track.album.cover_small}" 
-               class="me-3 rounded" width="50" alt="${track.title}">
-          <div>
-            <h6 class="mb-0">${track.title}</h6>
-            <small class="text-muted">${track.artist.name}</small>
-          </div>
+      <div class="d-flex align-items-center">
+        <p class="me-4 fw-bold">${i + 1}</p>
+        <img src="${track.album.cover_small}" 
+             class="me-3 rounded" width="50" alt="${track.title}">
+        <div>
+          <h6 class="mb-0">${track.title}</h6>
+          <small class="text-muted">${track.artist.name}</small>
         </div>
-        <span class="text-muted">
-          ${Math.floor(track.duration / 60)}:${String(
+      </div>
+      <span class="text-muted">
+        ${Math.floor(track.duration / 60)}:${String(
         track.duration % 60
       ).padStart(2, "0")}
-        </span>
-      `;
+      </span>
+    `;
 
-      //=================== AGGIORNA FOOTER PLAYER ====================
-
+      // ======== CLICK SU UNA CANZONE =========
       row.addEventListener("click", () => {
+        // Aggiorna UI nel footer
         document.getElementById("player-cover").src = track.album.cover_small;
         document.getElementById("player-title").textContent = track.title;
         document.getElementById("player-artist").textContent =
           track.artist.name;
+
+        // Carica la preview nell'audio player (ma NON la riproduce subito)
+        audio.src = track.preview;
+        audio.pause();
+
+        // Aggiorna durata totale
+        currentTrackDuration = track.duration;
+        totalTimeEl.textContent = formatTime(track.duration);
+        currentTimeEl.textContent = "0:00";
+        progressBar.style.width = "0%";
+
+        // Reset bottone a "Play"
+        playButton.innerHTML = `
+        <svg width="16" fill="#000" viewBox="0 0 16 16">
+          <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"/>
+        </svg>
+      `;
       });
 
       songsList.appendChild(row);
     });
+
+    // ======== CLICK SU PLAY/PAUSE =========
+    playButton.addEventListener("click", () => {
+      if (!audio.src) return; // nessuna canzone selezionata
+      if (audio.paused) {
+        audio.play();
+        // Icona pausa
+        playButton.innerHTML = `
+        <svg width="16" fill="#000" viewBox="0 0 16 16">
+          <path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7z"/>
+        </svg>
+      `;
+      } else {
+        audio.pause();
+        // Icona play
+        playButton.innerHTML = `
+        <svg width="16" fill="#000" viewBox="0 0 16 16">
+          <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"/>
+        </svg>
+      `;
+      }
+    });
+
+    // ======== AGGIORNA TEMPO E PROGRESS =========
+    audio.addEventListener("timeupdate", () => {
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      if (audio.duration > 0) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+    });
+
+    // ======== AGGIORNA MINUTI TOTALI IN BASE ALLA CANZONE =========
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60)
+        .toString()
+        .padStart(2, "0");
+      return `${min}:${sec}`;
+    }
   }
 });

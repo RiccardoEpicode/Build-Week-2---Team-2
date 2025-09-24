@@ -9,7 +9,7 @@ body {
   font-family: "Circular", sans-serif;
   color: #fff;
   background-color: #000;
-  overflow-y: hidden; /* EVITA DOPPIO SCROLL */
+  overflow-y: hidden;
 }
 
 /* ===============================
@@ -48,7 +48,7 @@ body {
 
 .search-width {
   width: 30rem;
-  max-width: 520px; /* centrata */
+  max-width: 520px;
 }
 
 .search-padding {
@@ -88,7 +88,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Sidebar: non devono mai diventare troppo strette */
 .leftSide,
 .rightSide {
   min-width: 200px;
@@ -278,7 +277,6 @@ p {
     display: none !important;
   }
 
-  /* La centrale prende più spazio */
   .centralPart {
     flex: 1 1 auto;
     max-width: 100%;
@@ -286,7 +284,7 @@ p {
 
   /* Sidebar sinistra resta con min-width ma prende più respiro */
   .leftSide {
-    flex: 0 0 250px; /* leggermente più larga */
+    flex: 0 0 250px;
   }
 }
 
