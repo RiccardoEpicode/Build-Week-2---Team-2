@@ -157,7 +157,7 @@ hr {
 }
 
 :root {
-  --album-color: rgba(212, 19, 34, 1); /* colore di default */
+  --album-color: rgb(36, 36, 36); /* colore di default */
 }
 
 .background-center {
