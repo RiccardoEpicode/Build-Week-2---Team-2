@@ -146,6 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
               </svg>
             </button>
+            <!-- Album -->
+            <a href="album.html?artistId=${
+              data.id
+            }"class="btn btn-success rounded-pill px-4 fw-bold">Album</a>
             <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
             <button class="btn p-2">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
@@ -186,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 songsList.innerHTML = "<p>Nessuna canzone trovata</p>";
                 return;
               }
-              renderSongs(searchData.data.slice(0, 15));
+              renderSongs(searchData.data.slice(0, 5));
             });
         }
 
