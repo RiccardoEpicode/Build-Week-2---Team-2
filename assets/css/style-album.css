@@ -78,6 +78,13 @@ body {
   height: 82vh;
 }
 
+/* center coulmn */
+.center-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 82vh;
+}
+
 /* position absolute customised */
 .absolute-artist-title {
   font-size: 1.05rem;
@@ -146,14 +153,41 @@ hr {
 .glass-card {
   backdrop-filter: blur(12px) saturate(152%);
   -webkit-backdrop-filter: blur(12px) saturate(152%);
-  background-color: rgba(0, 0, 0, 0.51);
+  background-color: rgba(0, 0, 0, 0.526);
 }
+
+:root {
+  --album-color: rgba(212, 19, 34, 1); /* colore di default */
+}
+
 .background-center {
   background: linear-gradient(
     360deg,
-    rgba(18, 18, 18, 1) 0%,
-    rgba(89, 5, 5, 1) 77%,
-    rgba(156, 0, 0, 1) 94%,
-    rgba(212, 19, 34, 1) 100%
+    var(--album-color) 0%,
+
+    rgba(18, 18, 18, 1) 100%
   );
+}
+
+.footer-spacing {
+  margin-bottom: 120px;
+}
+/* footer */
+a {
+  text-decoration: none;
+  color: #b1b1b1;
+}
+
+.bottom-links a,
+p {
+  font-size: 14px;
+}
+
+/* social icon background circle */
+.social-icons-bg-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #292929;
+  border-radius: 50% !important;
+  vertical-align: middle;
 }
