@@ -1,14 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
+// ====== EVENTO PRINCIPALE DOPO IL CARICAMENTO DEL DOM =========
 
+document.addEventListener("DOMContentLoaded", () => {
+  // ============= PARAMETRI URL ===================================
+
+  const params = new URLSearchParams(window.location.search);
   const artistId = params.get("id");
   const artistName = params.get("name");
+
+  // =========== ELEMENTI DOM PRINCIPALI ========================
 
   const artistHeader = document.querySelector(".artist-header");
   const songsList = document.getElementById("songs-list");
   const resultsContainer = document.getElementById("results-container");
 
-  /* NAVBAR SEARCH  */
+  // =============== NAVBAR SEARCH ==============================
+
   const searchForm = document.querySelector("form[role='search']");
   const searchInput = searchForm?.querySelector("input[type='search']");
 
@@ -21,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* RAPID API HEADERS  */
+  // ================== RAPID API HEADERS ======================
+
   const options = {
     method: "GET",
     headers: {
@@ -30,7 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  /* === LOGICA === */
+  // ======== LOGICA PRINCIPALE (SEARCH O CARICAMENTO ARTISTA) ============
+
   if (artistName && !artistId) {
     // MODALITA' SEARCH
     fetch(
@@ -45,12 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
           resultsContainer.innerHTML = "<p>Nessun artista trovato</p>";
         }
       })
-      .catch((err) => console.error("❌ Errore search:", err));
+      .catch((err) => console.error("❌ ERRORE SEARCH:", err));
   } else if (artistId) {
     loadArtist(artistId, options);
   }
 
-  /* FUNZIONE RENDERIZZANTE LISTA ARTISTI  */
+  // ======== FUNZIONE RENDER LISTA ARTISTI =====================
+
   function renderArtistList(results) {
     resultsContainer.innerHTML = "";
     artistHeader.innerHTML = "";
@@ -85,7 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* FUNZIONE CARICAMENTO ARTISTA  */
+  // ========== FUNZIONE CARICAMENTO ARTISTA =====================
+
   function loadArtist(artistId, options) {
     fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}`,
@@ -93,54 +103,65 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        /* HEADER ARTISTA  */
-
+        //==================== HEADER ARTISTA ====================
         artistHeader.innerHTML = `
-       <div class="artist-hero position-relative text-white mb-4"
-         style="background: url('${
-           data.picture_xl
-         }') top center/cover no-repeat; 
-         height: 450px; border-radius: 8px;">
-         <div class="artist-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
-         <div class="position-absolute bottom-0 start-0 m-3 pb-4 ps-0">
-         <div class="d-flex align-items-center gap-2 mb-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="34" height="34">
-          <title>Verified account</title>
-          <path fill="#4CB3FF" d="M10.814.5a1.66 1.66 0 0 1 2.372 0 l2.512 2.572 3.595-.043 a1.66 1.66 0 0 1 1.678 1.678 l-.043 3.595 2.572 2.512 c.667.65.667 1.722 0 2.372 l-2.572 2.512 .043 3.595 a1.66 1.66 0 0 1-1.678 1.678 l-3.595-.043 -2.512 2.572 a1.66 1.66 0 0 1-2.372 0 l-2.512-2.572 -3.595.043 a1.66 1.66 0 0 1-1.678-1.678 l.043-3.595 L.5 13.186 a1.66 1.66 0 0 1 0-2.372 l2.572-2.512 -.043-3.595 a1.66 1.66 0 0 1 1.678-1.678 l3.595.043z"/>
-          <path fill="#ffffff" d="M17.398 9.62 a1 1 0 0 0-1.414-1.413 l-6.011 6.01-1.894-1.893 a1 1 0 0 0-1.414 1.414 l3.308 3.308z"/>
-        </svg>
-        <h6>Verified Artist</h6>
-      </div>
-      <div>
-        <h1 class="fw-bold">${data.name}</h1> 
-        <p>${data.nb_fan.toLocaleString()} monthly listeners</p> 
-      </div>
-    </div>
-  </div>
+          <div class="artist-hero position-relative text-white mb-4"
+               style="background: url('${
+                 data.picture_xl
+               }') center/cover no-repeat; 
+               height: 450px; border-radius: 8px;">
+            
+            <!-- OVERLAY SCURO -->
+            <div class="artist-overlay position-absolute top-0 start-0 w-100 h-100" 
+                 style="background: rgba(0,0,0,0.5); border-radius: 8px;">
+            </div>
+            
+            <!-- CONTENUTO IN BASSO -->
+            <div class="position-absolute bottom-0 start-0 m-3 pb-4 ps-0">
+              <div class="artist-info">
+                
+                <!-- VERIFIED BADGE -->
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="34" height="34">
+                    <title>Verified account</title>
+                    <path fill="#4CB3FF" d="M10.814.5a1.66 1.66 0 0 1 2.372 0 l2.512 2.572 3.595-.043 a1.66 1.66 0 0 1 1.678 1.678 l-.043 3.595 2.572 2.512 c.667.65.667 1.722 0 2.372 l-2.572 2.512 .043 3.595 a1.66 1.66 0 0 1-1.678 1.678 l-3.595-.043 -2.512 2.572 a1.66 1.66 0 0 1-2.372 0 l-2.512-2.572 -3.595.043 a1.66 1.66 0 0 1-1.678-1.678 l.043-3.595 L.5 13.186 a1.66 1.66 0 0 1 0-2.372 l2.572-2.512 -.043-3.595 a1.66 1.66 0 0 1 1.678-1.678 l3.595.043z"/>
+                    <path fill="#ffffff" d="M17.398 9.62 a1 1 0 0 0-1.414-1.413 l-6.011 6.01-1.894-1.893 a1 1 0 0 0-1.414 1.414 l3.308 3.308z"/>
+                  </svg>
+                  <h6 class="m-0">Verified Artist</h6>
+                </div>
 
-  <div class="d-flex align-items-center gap-3 mb-4">
-    <button class="btn rounded-circle p-3" style="background-color: #1ED760;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
-        <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
-      </svg>
-    </button>
-    <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
-    <button class="btn p-2">
-      <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline" viewBox="0 0 24 24" 
-           style="--encore-icon-height: var(--encore-graphic-size-decorative-larger); --encore-icon-width: var(--encore-graphic-size-decorative-larger);" 
-           width="20" height="20" fill="white">
-        <path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"></path>
-      </svg>
-    </button>
-  </div>
-`;
+                <!-- NOME ARTISTA -->
+                <h1 class="fw-bold m-0">${data.name}</h1> 
+
+                <!-- LISTENERS -->
+                <p class="m-0">${data.nb_fan.toLocaleString()} monthly listeners</p> 
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTTONI AZIONE -->
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <button class="btn rounded-circle p-3" style="background-color: #1ED760;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
+                <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
+              </svg>
+            </button>
+            <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
+            <button class="btn p-2">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                <path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+              </svg>
+            </button>
+          </div>
+        `;
 
         loadTopSongs(artistId, data.name, options);
       })
-      .catch((err) => console.error("❌ Errore artista:", err));
+      .catch((err) => console.error("❌ ERRORE ARTISTA:", err));
   }
 
-  /* FUNZIONE TOP SONGS */
+  // ============= FUNZIONE TOP SONGS =====================
+
   function loadTopSongs(artistId, artistName, options) {
     fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/top?limit=15`,
@@ -151,11 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
         songsList.innerHTML = "";
 
         if (!data.data || data.data.length === 0) {
-          console.warn(
-            "⚠️ Nessuna top song dall'endpoint artist/top → uso fallback search"
-          );
+          console.warn("⚠️ NESSUNA TOP SONG - USO FALLBACK SEARCH");
 
-          /* CERCA NOME ARTISTA */
+          //================ FALLBACK: CERCA NOME ARTISTA ==============
+
           return fetch(
             `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistName}`,
             options
@@ -172,17 +192,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderSongs(data.data);
       })
-      .catch((err) => console.error("❌ Errore top songs:", err));
+      .catch((err) => console.error("❌ ERRORE TOP SONGS:", err));
   }
 
-  /* FUNZIONE PER RENDERIZZARE LE CANZONI */
+  // =========== FUNZIONE RENDER SONGS ====================
+
   function renderSongs(tracks) {
     songsList.innerHTML = "";
+
+    // =========== TITOLO SEZIONE ====================
 
     const title = document.createElement("h4");
     title.classList.add("mb-3");
     title.textContent = "Popular";
     songsList.appendChild(title);
+
+    // =========== LOOP SU OGNI CANZONE ====================
 
     tracks.forEach((track, i) => {
       const row = document.createElement("div");
@@ -197,23 +222,24 @@ document.addEventListener("DOMContentLoaded", () => {
       row.style.cursor = "pointer";
 
       row.innerHTML = `
-      <div class="d-flex align-items-center">
-        <span class="me-3 fw-bold">${i + 1}</span>
-        <img src="${track.album.cover_small}" 
-             class="me-3 rounded" width="50" alt="${track.title}">
-        <div>
-          <h6 class="mb-0">${track.title}</h6>
-          <small class="text-muted">${track.artist.name}</small>
+        <div class="d-flex align-items-center">
+          <p class="me-4 fw-bold">${i + 1}</p>
+          <img src="${track.album.cover_small}" 
+               class="me-3 rounded" width="50" alt="${track.title}">
+          <div>
+            <h6 class="mb-0">${track.title}</h6>
+            <small class="text-muted">${track.artist.name}</small>
+          </div>
         </div>
-      </div>
-      <span class="text-muted">
-        ${Math.floor(track.duration / 60)}:${String(
+        <span class="text-muted">
+          ${Math.floor(track.duration / 60)}:${String(
         track.duration % 60
       ).padStart(2, "0")}
-      </span>
-    `;
+        </span>
+      `;
 
-      /* CLICK AGGIORNA IL FOOTER */
+      //=================== AGGIORNA FOOTER PLAYER ====================
+
       row.addEventListener("click", () => {
         document.getElementById("player-cover").src = track.album.cover_small;
         document.getElementById("player-title").textContent = track.title;

@@ -45,8 +45,10 @@ body {
 /* ===============================
    SEARCH BAR
 =================================*/
+
 .search-width {
   width: 30rem;
+  max-width: 520px; /* centrata */
 }
 
 .search-padding {
@@ -86,6 +88,13 @@ body {
   overflow-x: hidden;
 }
 
+/* Sidebar: non devono mai diventare troppo strette */
+.leftSide,
+.rightSide {
+  min-width: 200px;
+  word-wrap: break-word;
+}
+
 .marginBottom {
   margin-bottom: 50vh;
 }
@@ -102,7 +111,7 @@ body {
 .playlist-container-right {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 82vh;
+  height: 92vh !important;
 }
 
 /* ===============================
@@ -116,6 +125,47 @@ body {
   left: 10px;
   font-weight: bold;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.artist-info {
+  display: flex;
+  flex-direction: column;
+}
+.artist-info h6,
+.artist-info h1,
+.artist-info p {
+  text-align: left;
+}
+
+/* ===============================
+   POPULAR SONGS LIST
+=================================*/
+
+.song-index {
+  width: 30px;
+  text-align: right;
+}
+
+/* ===============================
+   MAIN FOOTER
+=================================*/
+
+a {
+  text-decoration: none;
+  color: #b1b1b1;
+}
+
+.bottom-links a,
+p {
+  font-size: 14px;
+}
+
+.social-icons-bg-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #292929;
+  border-radius: 50% !important;
+  vertical-align: middle;
 }
 
 /* ===============================
@@ -151,7 +201,7 @@ body {
 }
 
 .marginBottom {
-  margin-bottom: 50vh;
+  margin-bottom: 10vh;
 }
 
 /* LISTA CANZONI → CURSOR POINTER E HOVER */
@@ -160,6 +210,29 @@ body {
 }
 #songs-list div:hover {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ===============================
+   FIX BOTTONI & CONTENUTI
+=================================*/
+
+/* Bottoni nelle sidebar */
+.leftSide button,
+.rightSide button {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card a destra bottone */
+.rightSide .card-body {
+  overflow: hidden;
+}
+
+.rightSide .card-body .btn {
+  flex-shrink: 0;
+  max-width: 100%;
 }
 
 /* ===============================
@@ -180,6 +253,13 @@ body {
   }
 }
 
+@media (max-width: 733px) {
+  .search-width {
+    width: 20rem;
+    max-width: 520px;
+  }
+}
+
 @media (min-width: 768px) {
   .extra-icons input[type="range"] {
     width: 150px;
@@ -189,5 +269,30 @@ body {
 @media (min-width: 1400px) {
   .extra-icons input[type="range"] {
     width: 200px;
+  }
+}
+
+/* Nascondi colonna destra sotto i 1430px */
+@media (max-width: 1430px) {
+  .rightSide {
+    display: none !important;
+  }
+
+  /* La centrale prende più spazio */
+  .centralPart {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  /* Sidebar sinistra resta con min-width ma prende più respiro */
+  .leftSide {
+    flex: 0 0 250px; /* leggermente più larga */
+  }
+}
+
+/* Nascondi completamente la navbar sotto i 575px */
+@media (max-width: 575px) {
+  .navbar {
+    display: none !important;
   }
 }
