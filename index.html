@@ -387,124 +387,46 @@
               </div>
             </div>
           </div>
-
+          <!-- ******************************************************** -->
           <!-- section mix preferiti -->
           <div class="d-flex justify-content-between align-items-center mt-2 mb-3 px-5">
             <h2 class="fs-4 fw-bold">I tuoi mix preferiti</h2>
             <a href="#" class="text-white-50 text-decoration-none">Mostra tutto</a>
           </div>
           <!-- cards mix preferiti -->
-          <div class="scroll-row d-flex gap-3 ps-5 mb-5">
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-1.jpg" alt="Shakira">
-              <div class="p-2">
-                <h6>Shakira Mix</h6>
-                <p>Karol G, Becky G, Rosalía</p>
-              </div>
+          <div class="scroll-wrapper">
+            <!-- Pulsante freccia sinistra -->
+            <button class="scroll-btn left">&lt;</button>
+          
+            <!-- Contenitore card -->
+            <div id="favorite-mixes" class="scroll-row d-flex gap-3 ps-5 mb-5">
+              <!-- Le card verranno caricate via JS -->
             </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-3.jpg" alt="Hip Hop">
-              <div class="p-2">
-                <h6>Mix Hip Hop</h6>
-                <p>A$AP Ferg, Akon, Post Malone</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-4.jpg" alt="Pop">
-              <div class="p-2">
-                <h6>Mix Pop</h6>
-                <p>Iggy Azalea, Miley Cyrus, Zara Larsson</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-5.jpg" alt="Latino">
-              <div class="p-2">
-                <h6>Mix Latino</h6>
-                <p>Alvaro Soler, Enrique Iglesias</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-10.jpg" alt="Latino">
-              <div class="p-2">
-                <h6>Mix Latino</h6>
-                <p>Alvaro Soler, Enrique Iglesias</p>
-              </div>
-            </div>
-            <!-- card -->
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-9.jpg" alt="Latino">
-              <div class="p-2">
-                <h6>Mix Latino</h6>
-                <p>Alvaro Soler, Enrique Iglesias</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-15.jpg" alt="Latino">
-              <div class="p-2">
-                <h6>Mix Latino</h6>
-                <p>Alvaro Soler, Enrique Iglesias</p>
-              </div>
-            </div>
+          
+            <!-- Pulsante freccia destra -->
+            <button class="scroll-btn right">&gt;</button>
           </div>
-
+          <!-- ******************************************************** -->
+          <!-- ******************************************************** -->
           <!-- section consigliata per oggi -->
           <div class="d-flex justify-content-between align-items-center px-5 mb-3">
             <h2 class="fw-bold fs-4 ">Consigliata per oggi</h2>
             <a href="#" class="text-white-50 text-decoration-none">Mostra tutto</a>
           </div>
           <!-- cards consigliata per oggi -->
-          <div class="scroll-row d-flex gap-3 ps-5 mb-4">
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-6.jpg" alt="Estate">
-              <div class="p-2">
-                <h6>Estate Vibes</h6>
-                <p>Hit del momento</p>
-              </div>
+          <div class="scroll-wrapper">
+            <!-- Pulsante freccia sinistra -->
+            <button class="scroll-btn left">&lt;</button>
+          
+            <!-- Recommended card -->
+            <div id="recommended" class="scroll-row d-flex gap-3 ps-5 mb-4">
+              <!-- dynamic cards -->
             </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-7.jpg" alt="Trap">
-              <div class="p-2">
-                <h6>Trap Today</h6>
-                <p>Travis Scott, Future</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-8.jpg" alt="Dance">
-              <div class="p-2">
-                <h6>Dance Party</h6>
-                <p>David Guetta, Calvin Harris</p>
-              </div>
-            </div>
-            <!-- card -->
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-11.jpg" alt="Dance">
-              <div class="p-2">
-                <h6>Dance Party</h6>
-                <p>David Guetta, Calvin Harris</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-12.jpg" alt="Dance">
-              <div class="p-2">
-                <h6>Dance Party</h6>
-                <p>David Guetta, Calvin Harris</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-13.jpg" alt="Dance">
-              <div class="p-2">
-                <h6>Dance Party</h6>
-                <p>David Guetta, Calvin Harris</p>
-              </div>
-            </div>
-            <div class="custom-card">
-              <img src="./assets/imgs/main/image-14.jpg" alt="Dance">
-              <div class="p-2">
-                <h6>Dance Party</h6>
-                <p>David Guetta, Calvin Harris</p>
-              </div>
-            </div>
+          
+            <!-- Pulsante freccia destra -->
+            <button class="scroll-btn right">&gt;</button>
           </div>
+          <!-- ******************************************************** -->
 
           <!-- footer -->
           <footer class="footer mt-5 pt-4 pb-2">
@@ -925,7 +847,6 @@
   </main>
   <!-- my js scripts -->
   <script src="./assets/js/home.js"></script>
-  <script src="./assets/js/search.js"></script>
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
