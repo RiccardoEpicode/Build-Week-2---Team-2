@@ -2,19 +2,17 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // ============= PARAMETRI URL ===================================
-
   const params = new URLSearchParams(window.location.search);
   const artistId = params.get("id");
   const artistName = params.get("name");
 
   // =========== ELEMENTI DOM PRINCIPALI ========================
-
   const artistHeader = document.querySelector(".artist-header");
   const songsList = document.getElementById("songs-list");
+  songsList.style.margin = "0 15px";
   const resultsContainer = document.getElementById("results-container");
 
   // =============== NAVBAR SEARCH ==============================
-
   const searchForm = document.querySelector("form[role='search']");
   const searchInput = searchForm?.querySelector("input[type='search']");
 
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================== RAPID API HEADERS ======================
-
   const options = {
     method: "GET",
     headers: {
@@ -38,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ======== LOGICA PRINCIPALE (SEARCH O CARICAMENTO ARTISTA) ============
-
   if (artistName && !artistId) {
     // MODALITA' SEARCH
     fetch(
@@ -59,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======== FUNZIONE RENDER LISTA ARTISTI =====================
-
   function renderArtistList(results) {
     resultsContainer.innerHTML = "";
     artistHeader.innerHTML = "";
@@ -139,16 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <!-- BOTTONI AZIONE -->
-        <div class="d-flex align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3 mx-2 mb-4">
           <!-- Play -->
           <button class="btn rounded-circle p-3" style="background-color: #1ED760;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
               <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
             </svg>
           </button>
-
-          <!-- Album -->
-          <button id="albumButton" class="btn btn-success rounded-pill px-4">Album</button>
 
           <!-- Follow -->
           <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
@@ -162,42 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-        // ================== EVENTO BOTTONE ALBUM ==================
-        const albumButton = document.getElementById("albumButton");
-        albumButton.addEventListener("click", () => {
-          fetch(
-            `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`,
-            options
-          )
-            .then((res) => res.json())
-            .then((albums) => {
-              if (albums.data && albums.data.length > 0) {
-                const firstAlbum = albums.data[0]; // per ora prendo solo il primo album
-                window.location.href = `album.html?id=${firstAlbum.id}&artistId=${artistId}`;
-              } else {
-                // Fallback con ricerca per nome artista
-                fetch(
-                  `https://deezerdevs-deezer.p.rapidapi.com/search?q=${data.name}`,
-                  options
-                )
-                  .then((res) => res.json())
-                  .then((searchData) => {
-                    const albumResult = searchData.data.find(
-                      (item) => item.album
-                    );
-                    if (albumResult) {
-                      window.location.href = `album.html?id=${albumResult.album.id}&artistId=${artistId}`;
-                    } else {
-                      alert("Nessun album disponibile per questo artista.");
-                    }
-                  });
-              }
-            })
-            .catch((err) =>
-              console.error("❌ Errore nel recupero album:", err)
-            );
-        });
-
         // ================== CARICA LE TOP SONGS ==================
         loadTopSongs(artistId, data.name, options);
       })
@@ -205,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ============= FUNZIONE TOP SONGS =====================
-
   function loadTopSongs(artistId, artistName, options) {
     fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/top?limit=25`,
@@ -217,8 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!data.data || data.data.length === 0) {
           console.warn("⚠️ NESSUNA TOP SONG - USO FALLBACK SEARCH");
-
-          //================ FALLBACK: CERCA NOME ARTISTA ==============
 
           return fetch(
             `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistName}`,
@@ -269,14 +222,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "song-row"
       );
 
-      row.style.cursor = "pointer";
-
       row.innerHTML = `
       <div class="d-flex align-items-center">
         <p class="me-4 fw-bold">${i + 1}</p>
         <img src="${track.album.cover_small}" 
-             class="me-3 rounded" width="50" alt="${track.title}">
-        <div>
+             class="me-3 rounded song-album-cover" width="50" alt="${
+               track.title
+             }" style="cursor:pointer">
+        <div class="song-text" style="cursor:pointer">
           <h6 class="mb-0">${track.title}</h6>
           <small class="text-muted">${track.artist.name}</small>
         </div>
@@ -288,30 +241,30 @@ document.addEventListener("DOMContentLoaded", () => {
       </span>
     `;
 
-      // ======== CLICK SU UNA CANZONE =========
-      row.addEventListener("click", () => {
-        // Aggiorna UI nel footer
+      // CLICK SU TESTO = aggiorna player
+      row.querySelector(".song-text").addEventListener("click", () => {
         document.getElementById("player-cover").src = track.album.cover_small;
         document.getElementById("player-title").textContent = track.title;
         document.getElementById("player-artist").textContent =
           track.artist.name;
 
-        // Carica la preview nell'audio player (ma NON la riproduce subito)
         audio.src = track.preview;
         audio.pause();
 
-        // Aggiorna durata totale
         currentTrackDuration = track.duration;
         totalTimeEl.textContent = formatTime(track.duration);
         currentTimeEl.textContent = "0:00";
         progressBar.style.width = "0%";
 
-        // Reset bottone a "Play"
         playButton.innerHTML = `
         <svg width="16" fill="#000" viewBox="0 0 16 16">
           <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"/>
-        </svg>
-      `;
+        </svg>`;
+      });
+
+      // CLICK SU IMMAGINE = vai ad album
+      row.querySelector(".song-album-cover").addEventListener("click", () => {
+        window.location.href = `album.html?id=${track.album.id}&artistId=${track.artist.id}`;
       });
 
       songsList.appendChild(row);
@@ -319,23 +272,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ======== CLICK SU PLAY/PAUSE =========
     playButton.addEventListener("click", () => {
-      if (!audio.src) return; // nessuna canzone selezionata
+      if (!audio.src) return;
       if (audio.paused) {
         audio.play();
-        // Icona pausa
         playButton.innerHTML = `
         <svg width="16" fill="#000" viewBox="0 0 16 16">
           <path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7z"/>
-        </svg>
-      `;
+        </svg>`;
       } else {
         audio.pause();
-        // Icona play
         playButton.innerHTML = `
         <svg width="16" fill="#000" viewBox="0 0 16 16">
           <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"/>
-        </svg>
-      `;
+        </svg>`;
       }
     });
 
@@ -348,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // ======== AGGIORNA MINUTI TOTALI IN BASE ALLA CANZONE =========
+    // ======== FORMAT TIME =========
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
       const sec = Math.floor(seconds % 60)
