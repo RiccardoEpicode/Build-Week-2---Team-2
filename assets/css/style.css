@@ -311,6 +311,9 @@ p {
 /* ===============================
    MEDIA QUERIES
 =================================*/
+
+/*
+
 @media (max-width: 550px) {
   .extra-icons img {
     width: 35px;
@@ -345,7 +348,8 @@ p {
   }
 }
 
-/* Nascondi colonna destra sotto i 1430px */
+/*
+ //Nascondi colonna destra sotto i 1430px 
 @media (max-width: 1430px) {
   .rightSide {
     display: none !important;
@@ -356,15 +360,17 @@ p {
     max-width: 100%;
   }
 
-  /* Sidebar sinistra resta con min-width ma prende più respiro */
+  //Sidebar sinistra resta con min-width ma prende più respiro 
   .leftSide {
     flex: 0 0 250px;
   }
 }
 
-/* Nascondi completamente la navbar sotto i 575px */
+//Nascondi completamente la navbar sotto i 575px 
 @media (max-width: 575px) {
   .navbar {
     display: none !important;
   }
 }
+
+*/
