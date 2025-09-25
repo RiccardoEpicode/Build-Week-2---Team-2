@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadTopSongs(artistId, artistName, options) {
     fetch(
-      `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/top?limit=15`,
+      `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/top?limit=25`,
       options
     )
       .then((res) => res.json())
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 songsList.innerHTML = "<p>Nessuna canzone trovata</p>";
                 return;
               }
-              renderSongs(searchData.data.slice(0, 5));
+              renderSongs(searchData.data.slice(0, 10));
             });
         }
 
