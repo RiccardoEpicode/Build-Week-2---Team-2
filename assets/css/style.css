@@ -138,10 +138,10 @@ a:hover{
   );
 }
 
-.scroll-row {
+/* .scroll-row {
   overflow-x: auto;
   scrollbar-width: none;
-}
+} */
 
 .scroll-row::-webkit-scrollbar {
   display: none;
@@ -237,10 +237,10 @@ a:hover{
   vertical-align: middle;
 }
 
-
+/* home page scrolls, play button, nav arrows */
 .scroll-wrapper {
   position: relative;
-  overflow: visible !important;
+  overflow: hidden;
 }
 
 .scroll-row {

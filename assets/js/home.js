@@ -56,7 +56,7 @@ async function loadFavoriteMixes() {
     </div>
   </div>`;
 
-  const searchHits = await fetchFromDeezer("/search?q=top&limit=6");
+  const searchHits = await fetchFromDeezer("/search?q=top&limit=10");
 
   if (searchHits && searchHits.data) {
     mixContainer.innerHTML = "";
@@ -80,7 +80,7 @@ async function loadRecommendedContent() {
     </div>
   </div>`;
 
-  const tracksData = await fetchFromDeezer("/search?q=recommend&limit=6");
+  const tracksData = await fetchFromDeezer("/search?q=recommend&limit=10");
 
   if (tracksData && tracksData.data) {
     recommendedContainer.innerHTML = "";
