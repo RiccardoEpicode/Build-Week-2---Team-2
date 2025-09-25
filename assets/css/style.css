@@ -11,7 +11,6 @@ body {
   background-color: #000;
   overflow-y: hidden;
 }
-
 /* ===============================
    COLORI & TESTI
 =================================*/
@@ -70,6 +69,10 @@ body {
 
 .search-nav-border {
   border-left: 1px solid #c9c3c3;
+}
+
+.margin {
+  margin: 0 12px;
 }
 
 /* ===============================
@@ -211,6 +214,10 @@ hr {
 .footer-spacing {
   margin-bottom: 120px;
 }
+
+/* ===============================
+   HOME
+=================================*/
 
 /* ===============================
    MAIN FOOTER

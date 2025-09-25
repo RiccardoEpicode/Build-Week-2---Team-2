@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== FUNZIONE CARICAMENTO ARTISTA =====================
-
   function loadArtist(artistId, options) {
     fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}`,
@@ -105,60 +104,101 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         //==================== HEADER ARTISTA ====================
         artistHeader.innerHTML = `
-          <div class="artist-hero position-relative text-white mb-4"
-               style="background: url('${
-                 data.picture_xl
-               }') center/cover no-repeat; 
-               height: 450px; border-radius: 8px;">
-            
-            <!-- OVERLAY SCURO -->
-            <div class="artist-overlay position-absolute top-0 start-0 w-100 h-100" 
-                 style="background: rgba(0,0,0,0.5); border-radius: 8px;">
-            </div>
-            
-            <!-- CONTENUTO IN BASSO -->
-            <div class="position-absolute bottom-0 start-0 m-3 pb-4 ps-0">
-              <div class="artist-info">
-                
-                <!-- VERIFIED BADGE -->
-                <div class="d-flex align-items-center gap-2 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="34" height="34">
-                    <title>Verified account</title>
-                    <path fill="#4CB3FF" d="M10.814.5a1.66 1.66 0 0 1 2.372 0 l2.512 2.572 3.595-.043 a1.66 1.66 0 0 1 1.678 1.678 l-.043 3.595 2.572 2.512 c.667.65.667 1.722 0 2.372 l-2.572 2.512 .043 3.595 a1.66 1.66 0 0 1-1.678 1.678 l-3.595-.043 -2.512 2.572 a1.66 1.66 0 0 1-2.372 0 l-2.512-2.572 -3.595.043 a1.66 1.66 0 0 1-1.678-1.678 l.043-3.595 L.5 13.186 a1.66 1.66 0 0 1 0-2.372 l2.572-2.512 -.043-3.595 a1.66 1.66 0 0 1 1.678-1.678 l3.595.043z"/>
-                    <path fill="#ffffff" d="M17.398 9.62 a1 1 0 0 0-1.414-1.413 l-6.011 6.01-1.894-1.893 a1 1 0 0 0-1.414 1.414 l3.308 3.308z"/>
-                  </svg>
-                  <h6 class="m-0">Verified Artist</h6>
-                </div>
-
-                <!-- NOME ARTISTA -->
-                <h1 class="fw-bold m-0">${data.name}</h1> 
-
-                <!-- LISTENERS -->
-                <p class="m-0">${data.nb_fan.toLocaleString()} monthly listeners</p> 
+        <div class="artist-hero position-relative text-white mb-4"
+             style="background: url('${
+               data.picture_xl
+             }') center/cover no-repeat; 
+             height: 450px; border-radius: 8px;">
+          
+          <!-- OVERLAY SCURO -->
+          <div class="artist-overlay position-absolute top-0 start-0 w-100 h-100" 
+               style="background: rgba(0,0,0,0.5); border-radius: 8px;">
+          </div>
+          
+          <!-- CONTENUTO IN BASSO -->
+          <div class="position-absolute bottom-0 start-0 m-3 pb-4 ps-0">
+            <div class="artist-info">
+              
+              <!-- VERIFIED BADGE -->
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="34" height="34">
+                  <title>Verified account</title>
+                  <path fill="#4CB3FF" d="M10.814.5a1.66 1.66 0 0 1 2.372 0 l2.512 2.572 3.595-.043 a1.66 1.66 0 0 1 1.678 1.678 l-.043 3.595 2.572 2.512 c.667.65.667 1.722 0 2.372 l-2.572 2.512 .043 3.595 a1.66 1.66 0 0 1-1.678 1.678 l-3.595-.043 -2.512 2.572 a1.66 1.66 0 0 1-2.372 0 l-2.512-2.572 -3.595.043 a1.66 1.66 0 0 1-1.678-1.678 l.043-3.595 L.5 13.186 a1.66 1.66 0 0 1 0-2.372 l2.572-2.512 -.043-3.595 a1.66 1.66 0 0 1 1.678-1.678 l3.595.043z"/>
+                  <path fill="#ffffff" d="M17.398 9.62 a1 1 0 0 0-1.414-1.413 l-6.011 6.01-1.894-1.893 a1 1 0 0 0-1.414 1.414 l3.308 3.308z"/>
+                </svg>
+                <h6 class="m-0">Verified Artist</h6>
               </div>
+
+              <!-- NOME ARTISTA -->
+              <h1 class="fw-bold m-0">${data.name}</h1> 
+
+              <!-- LISTENERS -->
+              <p class="m-0">${data.nb_fan.toLocaleString()} monthly listeners</p> 
             </div>
           </div>
+        </div>
 
-          <!-- BOTTONI AZIONE -->
-          <div class="d-flex align-items-center gap-3 mb-4">
-            <button class="btn rounded-circle p-3" style="background-color: #1ED760;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
-                <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
-              </svg>
-            </button>
-            <!-- Album -->
-            <a href="album.html?artistId=${
-              data.id
-            }"class="btn btn-success rounded-pill px-4 fw-bold">Album</a>
-            <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
-            <button class="btn p-2">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                <path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-              </svg>
-            </button>
-          </div>
-        `;
+        <!-- BOTTONI AZIONE -->
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <!-- Play -->
+          <button class="btn rounded-circle p-3" style="background-color: #1ED760;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 16 16">
+              <path d="M10.804 8 5 4.633v6.734z" transform="scale(1.5) translate(-2,-2)"/>
+            </svg>
+          </button>
 
+          <!-- Album -->
+          <button id="albumButton" class="btn btn-success rounded-pill px-4">Album</button>
+
+          <!-- Follow -->
+          <button class="btn btn-outline-light rounded-pill px-4">Follow</button>
+
+          <!-- More options -->
+          <button class="btn p-2">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+              <path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+            </svg>
+          </button>
+        </div>
+      `;
+
+        // ================== EVENTO BOTTONE ALBUM ==================
+        const albumButton = document.getElementById("albumButton");
+        albumButton.addEventListener("click", () => {
+          fetch(
+            `https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`,
+            options
+          )
+            .then((res) => res.json())
+            .then((albums) => {
+              if (albums.data && albums.data.length > 0) {
+                const firstAlbum = albums.data[0]; // per ora prendo solo il primo album
+                window.location.href = `album.html?id=${firstAlbum.id}&artistId=${artistId}`;
+              } else {
+                // Fallback con ricerca per nome artista
+                fetch(
+                  `https://deezerdevs-deezer.p.rapidapi.com/search?q=${data.name}`,
+                  options
+                )
+                  .then((res) => res.json())
+                  .then((searchData) => {
+                    const albumResult = searchData.data.find(
+                      (item) => item.album
+                    );
+                    if (albumResult) {
+                      window.location.href = `album.html?id=${albumResult.album.id}&artistId=${artistId}`;
+                    } else {
+                      alert("Nessun album disponibile per questo artista.");
+                    }
+                  });
+              }
+            })
+            .catch((err) =>
+              console.error("❌ Errore nel recupero album:", err)
+            );
+        });
+
+        // ================== CARICA LE TOP SONGS ==================
         loadTopSongs(artistId, data.name, options);
       })
       .catch((err) => console.error("❌ ERRORE ARTISTA:", err));

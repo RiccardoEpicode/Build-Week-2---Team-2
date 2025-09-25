@@ -1,7 +1,6 @@
 const getParams = new URLSearchParams(window.location.search);
 const albumId = getParams.get("id");
-const testId = "103248";
-const testId2 = "556294552";
+const artistId = getParams.get("artistId");
 
 const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
 
@@ -105,7 +104,7 @@ const averageColor = function (imgElement, callback) {
   callback(`rgb(${r}, ${g}, ${b})`);
 };
 
-fetch(URL + testId2, {
+fetch(URL + albumId, {
   method: "GET",
 
   headers: {
