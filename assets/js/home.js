@@ -3,9 +3,9 @@ const apiBaseUrl = "https://deezerdevs-deezer.p.rapidapi.com";
 const options = {
   method: "GET",
   headers: {
-   'x-rapidapi-key': 'c485a2ac9bmsh363ec30d5006119p1be212jsn4f4f27d566e5',
-		'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
-  }
+    "x-rapidapi-key": "c485a2ac9bmsh363ec30d5006119p1be212jsn4f4f27d566e5",
+    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+  },
 };
 
 /* Function to fetch data from Deezer API */
@@ -25,25 +25,29 @@ function createMixCard(item) {
   card.className = "home-card";
 
   const artists = item.contributors
-    ? item.contributors.slice(0, 3).map(a => a.name).join(", ")
+    ? item.contributors
+        .slice(0, 3)
+        .map((a) => a.name)
+        .join(", ")
     : item.artist
-      ? item.artist.name
-      : "";
+    ? item.artist.name
+    : "";
 
-  const image = item.picture_medium || item.album?.cover_medium || "./assets/imgs/default.jpg";
+  const image = item.picture_medium || item.album?.cover_medium;
 
   card.innerHTML = `
+    <div class="home-image-container">
     <img src="${image}" alt="${item.title}" class="w-100">
+    <a href="#" class="play-btn"> <svg data-encore-id="icon" role="img" width="20" fill="#000" aria-hidden="true" class="e-91000-icon e-91000-baseline" viewBox="0 0 24 24"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606"></path></svg></a>
+    </div>
     <div class="p-2">
-      <h6>${item.title}</h6>
+      <p>${item.title}</p>
       <p>${artists}</p>
     </div>
-    <button class="play-btn">▶</button>
   `;
 
   return card;
 }
-
 
 /* Load favorite mixes (using search query) */
 async function loadFavoriteMixes() {
@@ -60,12 +64,13 @@ async function loadFavoriteMixes() {
 
   if (searchHits && searchHits.data) {
     mixContainer.innerHTML = "";
-    searchHits.data.forEach(item => {
+    searchHits.data.forEach((item) => {
       const card = createMixCard(item);
       mixContainer.appendChild(card);
     });
   } else {
-    mixContainer.innerHTML = "<p class='text-center w-100'>Impossibile caricare i mix preferiti</p>";
+    mixContainer.innerHTML =
+      "<p class='text-center w-100'>Impossibile caricare i mix preferiti</p>";
   }
 }
 
@@ -84,18 +89,19 @@ async function loadRecommendedContent() {
 
   if (tracksData && tracksData.data) {
     recommendedContainer.innerHTML = "";
-    tracksData.data.forEach(track => {
+    tracksData.data.forEach((track) => {
       const card = createMixCard(track);
       recommendedContainer.appendChild(card);
     });
   } else {
-    recommendedContainer.innerHTML = "<p class='text-center w-100'>Impossibile caricare i contenuti consigliati</p>";
+    recommendedContainer.innerHTML =
+      "<p class='text-center w-100'>Impossibile caricare i contenuti consigliati</p>";
   }
 }
 
 /* scroll card on sections  with arrows */
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+  document.querySelectorAll(".scroll-wrapper").forEach((wrapper) => {
     const container = wrapper.querySelector(".scroll-row");
     const leftBtn = wrapper.querySelector(".scroll-btn.left");
     const rightBtn = wrapper.querySelector(".scroll-btn.right");
@@ -111,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 
 /* Initialize */
 document.addEventListener("DOMContentLoaded", () => {

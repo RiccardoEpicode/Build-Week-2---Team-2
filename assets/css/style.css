@@ -283,17 +283,21 @@ p {
 }
 
 .home-card {
-  position: relative;
   flex: 0 0 200px !important;
   border-radius: 10px;
   overflow: hidden;
-  background: #181818;
+  
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .home-card:hover {
-  transform: scale(1.05);
+  background: #181818;
+  border-radius: 6px;
+}
+
+.home-image-container{
+  position: relative;
 }
 
 .home-card img {
@@ -302,13 +306,10 @@ p {
   height: auto;
 }
 
-.home-card .play-btn {
+.home-image-container .play-btn {
   position: absolute;
-  bottom:90px;
-  right: 10px;
-/*   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  bottom:15px;
+  right: 15px;
   background: #1db954;
   color: white;
   border: none;
@@ -323,7 +324,18 @@ p {
   transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-.home-card:hover .play-btn {
+.home-image-container:hover .play-btn {
   opacity: 1;
   transform: scale(1.1);
+}
+
+.home-image-container .play-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+
+.home-card p{
+  color: #8F8F8F;
+  margin: 0;
 }
