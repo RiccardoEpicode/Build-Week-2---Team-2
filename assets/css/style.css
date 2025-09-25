@@ -1,21 +1,62 @@
-/* ===============================
-   RESET & GLOBAL
-=================================*/
+/* base */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Circular", sans-serif;
-  color: #fff;
-  background-color: #000;
+  font-family: "Circular";
+  color: #333;
   overflow-y: hidden;
 }
-/* ===============================
-   COLORI & TESTI
-=================================*/
+
+a {
+  text-decoration: none;
+  color: #b1b1b1;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* navigation */
+
+.search-icon {
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem #fff !important;
+  /* outline: none !important; */
+  /*  border:1px solid #fff !important; */
+}
+
+.search-nav {
+  position: absolute;
+  padding-top: 0;
+  padding-bottom: 0;
+  top: 10px;
+  right: 8px;
+}
+
+.search-nav-border {
+  border-left: 1px solid #c9c3c3 !important;
+}
+
+.search-width {
+  width: 30rem;
+}
+
+.search-padding {
+  padding: 12px 0;
+}
+
+/* colors */
+
 .black {
-  background-color: #000 !important;
+  background-color: black;
 }
 
 .grey {
@@ -34,91 +75,125 @@ body {
   color: #686767;
 }
 
-/* ===============================
-   FONT SIZE CUSTOM
-=================================*/
+/* end colors */
+
+/* custom font size */
 .fs-7 {
   font-size: 14px;
 }
 
-/* ===============================
-   SEARCH BAR
-=================================*/
-
-.search-width {
-  width: 30rem;
-  max-width: 520px;
+/* sidebars container */
+.sidebar-container,
+.playlist-container,
+.center-container {
+  height: calc(100vh - 92px - 64px - 8px);
 }
 
-.search-padding {
-  padding: 12px 0;
+.sidebar-container {
+  max-width: 323px;
 }
 
-.search-icon {
-  position: absolute;
-  top: 4px;
-  left: 0;
-}
+/* @media screen and (max-width: 992px) {
+  
+  .sidebar-container,
+  .playlist-container,
+  .center-container {
+    height: calc(100vh - 164px - 64px - 8px);
+  }
+} */
 
-.search-nav {
-  position: absolute;
-  top: 10px;
-  right: 8px;
-  padding: 0;
-}
-
-.search-nav-border {
-  border-left: 1px solid #c9c3c3;
-}
-
-.margin {
-  margin: 0 12px;
-}
-
-/* ===============================
-   MAIN
-=================================*/
-.mainRow {
-  display: flex;
-  gap: 10px;
-}
-
-.leftSide,
-.centralPart,
-.rightSide {
-  height: calc(100vh - 100px);
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.leftSide,
-.rightSide {
-  min-width: 200px;
-  word-wrap: break-word;
-}
-
-.marginBottom {
-  margin-bottom: 50vh;
-}
-
-/* ===============================
-   SIDEBAR PLAYLISTS
-=================================*/
+/* left side playlist */
 .playlist-container {
-  overflow-y: auto;
   overflow-x: hidden;
-  height: 63vh;
+  overflow-y: scroll;
 }
 
+/* center coulmn */
+.center-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* navigation cards */
+
+.search-card {
+  max-width: 100%;
+  height: 169px;
+  overflow: hidden;
+}
+
+.search-card-title {
+  position: absolute;
+  top: 20px;
+  left: 14px;
+}
+
+.search-card-img {
+  position: absolute;
+  bottom: 0;
+  max-width: 42%;
+  transform: rotate(25deg) translate(18%, -2%);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  inset-inline-end: 0;
+}
+
+/* home cards */
+
+.gradient-color {
+  background: linear-gradient(to bottom, #b33f00 0%, #121212 100%);
+}
+
+/* .scroll-row {
+  overflow-x: auto;
+  scrollbar-width: none;
+} */
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-card {
+  max-width: 180px;
+  background: #181818;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.custom-card img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+  background: #282828;
+  cursor: pointer;
+}
+
+.custom-card h6 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.custom-card p {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+/* right side playlist */
 .playlist-container-right {
-  overflow-y: auto;
   overflow-x: hidden;
-  height: 92vh !important;
+  overflow-y: scroll;
 }
 
-/* ===============================
-   ARTIST HEADER
-=================================*/
+/* position absolute customised */
 .absolute-artist-title {
   font-size: 1.05rem;
   position: absolute;
@@ -129,110 +204,34 @@ body {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-.artist-info {
-  display: flex;
-  flex-direction: column;
-}
-.artist-info h6,
-.artist-info h1,
-.artist-info p {
-  text-align: left;
-}
-
-/* ===============================
-   POPULAR SONGS LIST
-=================================*/
-
-.song-index {
+/* border radius 50% */
+.perfect-circle {
   width: 30px;
-  text-align: right;
-}
-
-/* ===============================
-   ALBUM
-=================================*/
-
-#album {
-  height: calc(100vh - 160px);
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#margin {
-  padding-bottom: 100px;
-}
-
-.padding-header {
-  padding-top: 3rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.artist-info {
-  font-size: 14px;
-  font-weight: 500;
-  span {
-    color: #b5b5b5;
-    font-weight: 200;
-  }
-}
-.perfect-circle-album {
-  width: 50px;
-  height: 50px;
-  background-color: #3be477;
+  height: 30px;
   border-radius: 50% !important;
-  border: none;
-}
-.title-album {
-  font-weight: 900;
-}
-.clock {
-  margin-right: 3.5rem;
-}
-hr {
-  opacity: 0.1;
-}
-.glass-card {
-  backdrop-filter: blur(12px) saturate(152%);
-  -webkit-backdrop-filter: blur(12px) saturate(152%);
-  background-color: rgba(0, 0, 0, 0.526);
 }
 
-:root {
-  --album-color: rgba(212, 19, 34, 1); /* colore di default */
+/* progress bar volume*/
+
+.progress-bar-volume {
+  width: 93px;
+  height: 4px;
 }
 
-.background-center {
-  background: linear-gradient(
-    360deg,
-    var(--album-color) 0%,
-
-    rgba(18, 18, 18, 1) 100%
-  );
+/* progress bar song */
+.progress-bar-song {
+  width: 555px;
+  height: 4px;
 }
 
-.footer-spacing {
-  margin-bottom: 120px;
-}
-
-/* ===============================
-   HOME
-=================================*/
-
-/* ===============================
-   MAIN FOOTER
-=================================*/
-
-a {
-  text-decoration: none;
-  color: #b1b1b1;
-}
+/* footer */
 
 .bottom-links a,
 p {
   font-size: 14px;
 }
 
+/* social icon background circle */
 .social-icons-bg-circle {
   width: 40px;
   height: 40px;
@@ -241,136 +240,90 @@ p {
   vertical-align: middle;
 }
 
-/* ===============================
-   FOOTER / PLAYER
-=================================*/
-.extra-icons {
-  gap: 0.5rem;
+/* home page scrolls, play button, nav arrows */
+.scroll-wrapper {
+  position: relative;
+  overflow: hidden;
 }
 
-.extra-icons input[type="range"] {
-  width: 120px;
+.scroll-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* PROGRESS BAR VOLUME */
-.progress-bar-volume {
-  width: 93px;
-  height: 4px;
-}
-
-/* PROGRESS BAR SONG */
-.progress-bar-song {
-  width: 555px;
-  height: 4px;
-}
-
-/* ===============================
-   UTILS
-=================================*/
-.perfect-circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50% !important;
-}
-
-.marginBottom {
-  margin-bottom: 10vh;
-}
-
-/* LISTA CANZONI → CURSOR POINTER E HOVER */
-#songs-list div {
+.scroll-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   cursor: pointer;
-}
-#songs-list div:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
 }
 
-/* ===============================
-   FIX BOTTONI & CONTENUTI
-=================================*/
+.scroll-btn.left {
+  left: 10px;
+}
+.scroll-btn.right {
+  right: 10px;
+}
 
-/* Bottoni nelle sidebar */
-.leftSide button,
-.rightSide button {
-  max-width: 100%;
-  white-space: nowrap;
+.scroll-wrapper:hover .scroll-btn {
+  opacity: 1;
+}
+
+.home-card {
+  position: relative;
+  flex: 0 0 200px !important;
+  border-radius: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  background: #181818;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* Card a destra bottone */
-.rightSide .card-body {
-  overflow: hidden;
+.home-card:hover {
+  transform: scale(1.05);
 }
 
-.rightSide .card-body .btn {
-  flex-shrink: 0;
-  max-width: 100%;
+.home-card img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* ===============================
-   MEDIA QUERIES
-=================================*/
-
-/*
-
-@media (max-width: 550px) {
-  .extra-icons img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .extra-icons {
-    gap: 0.3rem !important;
-  }
-
-  .extra-icons input[type="range"] {
-    width: 60% !important;
-  }
+.home-card .play-btn {
+  position: absolute;
+  bottom: 90px;
+  right: 10px;
+  /*   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  background: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-@media (max-width: 733px) {
-  .search-width {
-    width: 20rem;
-    max-width: 520px;
-  }
+.home-card:hover .play-btn {
+  opacity: 1;
+  transform: scale(1.1);
 }
-
-@media (min-width: 768px) {
-  .extra-icons input[type="range"] {
-    width: 150px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .extra-icons input[type="range"] {
-    width: 200px;
-  }
-}
-
-/*
- //Nascondi colonna destra sotto i 1430px 
-@media (max-width: 1430px) {
-  .rightSide {
-    display: none !important;
-  }
-
-  .centralPart {
-    flex: 1 1 auto;
-    max-width: 100%;
-  }
-
-  //Sidebar sinistra resta con min-width ma prende più respiro 
-  .leftSide {
-    flex: 0 0 250px;
-  }
-}
-
-//Nascondi completamente la navbar sotto i 575px 
-@media (max-width: 575px) {
-  .navbar {
-    display: none !important;
-  }
-}
-
-*/
