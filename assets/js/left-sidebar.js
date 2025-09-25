@@ -1,9 +1,9 @@
 /* API configuration */
 const api = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
-const apiOptions = {
+const apiOptionsSidebar = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "c485a2ac9bmsh363ec30d5006119p1be212jsn4f4f27d566e5",
+    "x-rapidapi-key": token,
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
@@ -11,9 +11,9 @@ const apiOptions = {
 /* function fetch playlist */
 async function fetchPlaylist(id) {
   try {
-    const response = await fetch(api + id, apiOptions);
+    const response = await fetch(api + id, apiOptionsSidebar);
     const result = await response.json();
-    console.log(result);
+    /* console.log(result); */
     return result;
   } catch (error) {
     console.error("Error fetching data from Deezer API:", error);
@@ -23,7 +23,7 @@ async function fetchPlaylist(id) {
 
 // function load playlist
 async function loadPlaylists() {
-    const playlistIds = [122, 244, 129,160, 144, 351, 3444, 66, 1222, 1344, 277, 281]; 
+    const playlistIds = [122, 244, 129,160, 144, 351, 3444, 66,4555, 4233,4235]; 
     const playlist = document.getElementById("playlist");
     const spinner = document.getElementById("spinner");
 

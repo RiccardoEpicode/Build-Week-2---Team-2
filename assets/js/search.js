@@ -3,13 +3,13 @@ const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/genre/";
 const apiOptions = {
   method: "GET",
   headers: {
-		'x-rapidapi-key': 'c485a2ac9bmsh363ec30d5006119p1be212jsn4f4f27d566e5',
+		'x-rapidapi-key': token,
 		'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
 	}
 };
 
 /* selected genres id by me */
-const allCategories = [113, 132, 152, 122, 165, 106, 466, 144, 129, 84, 67, 98, 153, 197, 116, 71];
+const allCategories = [113, 132, 152, 122, 165, 106, 466, 144, 129, 84, 67, 98, 80, 197, 116, 71];
 /* fetch categories by id */
 async function fetchCategories(id) {
   try {

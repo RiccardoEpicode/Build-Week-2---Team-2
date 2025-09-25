@@ -3,7 +3,7 @@ const apiBaseUrl = "https://deezerdevs-deezer.p.rapidapi.com";
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "c485a2ac9bmsh363ec30d5006119p1be212jsn4f4f27d566e5",
+    "x-rapidapi-key": token,
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
