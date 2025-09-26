@@ -64,25 +64,38 @@ body {
   font-size: 14px;
 }
 
+/* sidebars container */
+.sidebar-container,
+.playlist-container,
+.center-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - 92px - 64px - 8px);
+}
+
+.sidebar-container {
+  max-width: 323px;
+}
+
+/* @media screen and (max-width: 992px) {
+  
+  .sidebar-container,
+  .playlist-container,
+  .center-container {
+    height: calc(100vh - 164px - 64px - 8px);
+  }
+} */
+
 /* left side playlist */
 .playlist-container {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 62vh;
-}
-
-/* right side playlist */
-.playlist-container-right {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 82vh;
 }
 
 /* center coulmn */
 .center-container {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 82vh;
 }
 
 /* position absolute customised */
@@ -190,4 +203,17 @@ p {
   background-color: #292929;
   border-radius: 50% !important;
   vertical-align: middle;
+}
+.selected {
+  background-color: #6867674f;
+}
+.progress-bar {
+  background-color: #1db954 !important;
+}
+.progress-bar-volume {
+  cursor: pointer;
+}
+.volume-active {
+  width: var(--volume-width) !important;
+  transition: width 0.1s ease;
 }

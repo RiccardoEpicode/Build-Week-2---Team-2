@@ -1,5 +1,6 @@
+// Alan Donati
 const getParams = new URLSearchParams(window.location.search);
-const albumId = getParams.get("id");
+const albumId = getParams.get("albumId");
 const testId = "103248";
 const testId2 = "556294552";
 
@@ -15,8 +16,28 @@ const artistPic = document.getElementById("artistPic");
 
 const albumInfo = document.getElementById("albumInfo");
 const trackListOl = document.getElementById("tracklistOl");
-console.log(albumInfo);
 
+const songInfo = document.getElementById("songInfo");
+const playerImg = songInfo.querySelector("img");
+const playerTitle = songInfo.querySelector("h6");
+const playerName = songInfo.querySelector("small");
+
+const PlayPause = document.getElementById("play");
+
+const progressBar = document.querySelector(".progress-bar");
+const currentTimeDisplay = document.querySelector(".me-2");
+const totalTimeDisplay = document.querySelector(".ms-2");
+
+const volumeBar = document.querySelector(".progress-bar-volume .progress-bar");
+const volumeContainer = document.querySelector(".progress-bar-volume");
+
+console.log(PlayPause);
+
+const globalAudioPlayer = new Audio();
+globalAudioPlayer.volume = 0.25;
+document.documentElement.style.setProperty("--volume-width", "25%");
+volumeBar.classList.add("volume-active");
+// Crea li per tracklist Album
 const createTracksLi = (tracklist) => {
   tracklist.forEach((track, index) => {
     const trackNumber = index + 1;
@@ -27,7 +48,8 @@ const createTracksLi = (tracklist) => {
     const seconds = duration % 60;
 
     const li = document.createElement("li");
-    li.className = "d-flex justify-content-between align-items-start py-2";
+    li.className =
+      "d-flex justify-content-between align-items-start py-2 px-2 rounded";
     const liDiv = document.createElement("div");
     liDiv.className = "d-flex align-items-start";
     const spanNum = document.createElement("span");
@@ -72,9 +94,126 @@ const createTracksLi = (tracklist) => {
     liDiv.append(spanNum, divInCont);
     li.append(liDiv, timeSpan);
     trackListOl.appendChild(li);
+
+    // Gestione Player
+    li.addEventListener("click", function () {
+      playerImg.src = track.album.cover_medium;
+      playerTitle.innerText = track.title;
+      playerName.innerText = track.artist.name;
+      globalAudioPlayer.pause();
+      globalAudioPlayer.currentTime = 0;
+
+      globalAudioPlayer.src = track.preview;
+      globalAudioPlayer.play();
+      PlayPause.innerHTML = `<svg data-encore-id="icon"        width="16"
+                fill="#000" role="img" aria-hidden="true" class="e-91000-icon e-91000-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7z"></path></svg>`;
+    });
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, "0")}`;
+    }
+    // Aggiornamento progress bar
+    globalAudioPlayer.addEventListener("timeupdate", function () {
+      if (globalAudioPlayer.duration) {
+        const progress =
+          (globalAudioPlayer.currentTime / globalAudioPlayer.duration) * 100;
+        progressBar.style.width = progress + "%";
+        currentTimeDisplay.textContent = formatTime(
+          globalAudioPlayer.currentTime
+        );
+      }
+    });
+
+    // Aggiornamento barra volume
+    volumeContainer.addEventListener("click", function (e) {
+      const rect = this.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+
+      globalAudioPlayer.volume = percent;
+
+      document.documentElement.style.setProperty(
+        "--volume-width",
+        percent * 100 + "%"
+      );
+      volumeBar.classList.add("volume-active");
+    });
+    globalAudioPlayer.addEventListener("loadedmetadata", function () {
+      totalTimeDisplay.textContent = formatTime(globalAudioPlayer.duration);
+      progressBar.style.width = "0%";
+    });
+
+    document
+      .querySelector(".progress-bar-song")
+      .addEventListener("click", function (e) {
+        if (globalAudioPlayer.duration) {
+          const rect = this.getBoundingClientRect();
+          const percent = (e.clientX - rect.left) / rect.width;
+          globalAudioPlayer.currentTime = percent * globalAudioPlayer.duration;
+        }
+      });
+
+    PlayPause.addEventListener("click", function () {
+      globalAudioPlayer.pause();
+      globalAudioPlayer.currentTime = 0;
+      PlayPause.innerHTML = `<svg
+                data-encore-id="icon"
+                width="16"
+                fill="#000"
+                role="img"
+                aria-hidden="true"
+                class="e-91000-icon e-91000-baseline"
+                viewBox="0 0 16 16"
+                style="
+                  --encore-icon-height: var(
+                    --encore-graphic-size-decorative-smaller
+                  );
+                  --encore-icon-width: var(
+                    --encore-graphic-size-decorative-smaller
+                  );
+                "
+              >
+                <path
+                  d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"
+                ></path>
+              </svg>`;
+    });
+    // Gestione Hoover
+    li.addEventListener("mouseenter", function () {
+      this.style.background = "#6867674f";
+      this.style.cursor = "pointer";
+      spanNum.innerHTML = `<svg
+                      data-encore-id="icon"
+                      width="16"
+                      fill="#636363ff"
+                      role="img"
+                      aria-hidden="true"
+                      class="e-91000-icon e-91000-baseline"
+                      viewBox="0 0 16 16"
+                      style="
+                        --encore-icon-height: var(
+                          --encore-graphic-size-decorative-smaller
+                        );
+                        --encore-icon-width: var(
+                          --encore-graphic-size-decorative-smaller
+                        );
+                      "
+                    >
+                      <path
+                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288z"
+                      ></path>
+                    </svg>`;
+    });
+
+    li.addEventListener("mouseleave", function () {
+      this.style.background = "";
+      spanNum.innerHTML = "";
+      spanNum.innerText = trackNumber;
+    });
   });
 };
-
+// Media dei colori
 const averageColor = function (imgElement, callback) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
@@ -111,7 +250,7 @@ fetch(URL + testId, {
   method: "GET",
 
   headers: {
-    "x-rapidapi-key": "38a13a7d0dmshccf622dd4609bcbp1d0e43jsna16f457d9c68",
+    "x-rapidapi-key": token,
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 })
@@ -142,6 +281,7 @@ fetch(URL + testId, {
     const minutes = Math.floor(duration / 60);
     const seconds = duration % 60;
 
+    artistPic.style.cursor = "pointer";
     albumInfo.innerHTML = `${
       album.artist.name
     } <span>• ${album.release_date.slice(0, 4)}</span> <span>• ${
@@ -150,74 +290,13 @@ fetch(URL + testId, {
                         <span>${minutes} min ${seconds} sec</span>`;
 
     createTracksLi(album.tracks.data);
-  });
 
-// Right Column Fetch
-
-const rightCont = document.getElementById("rightCont");
-
-const songImg = rightCont.querySelector("img");
-const songTitle = rightCont.querySelector(".my-1 a");
-const songArtist = rightCont.querySelector(".m-0 a");
-
-const card = document.querySelector(".card");
-const cardImg = card.querySelector("img");
-const cardName = card.querySelector(".card-body a");
-const fansCount = document.getElementById("fans");
-const artistDesc = document.getElementById("desc");
-const fansText = fansCount.firstElementChild;
-
-console.log(card);
-
-const artistDescriptions = [
-  "Artista versatile con uno stile unico che mescola influenze moderne e classiche, conquistando il pubblico con performance coinvolgenti.",
-  "Talento emergente nel panorama musicale internazionale, noto per le sue melodie accattivanti e i testi profondi.",
-  "Musicista innovativo che sperimenta con diversi generi, creando un sound distintivo che attraversa i confini tradizionali.",
-  "Artista carismatico con una voce potente e una presenza scenica magnetica che non lascia mai indifferenti.",
-  "Interprete sensibile capace di emozionare con ballate intense e di far ballare con ritmi coinvolgenti.",
-  "Songwriter di talento che racconta storie universali attraverso la musica, conquistando fan in tutto il mondo.",
-  "Artista poliedrico che spazia tra diversi stili musicali, sempre alla ricerca di nuove forme espressive.",
-  "Musicista appassionato con un forte legame con le proprie radici, che riesce a modernizzare suoni tradizionali.",
-  "Performer energico e creativo, famoso per i live mozzafiato e l'interazione autentica con il pubblico.",
-  "Talento naturale con una sensibilità artistica raffinata, capace di toccare le corde più profonde dell'anima.",
-];
-
-const playlistURL =
-  "https://deezerdevs-deezer.p.rapidapi.com/playlist/3155776842";
-
-fetch(playlistURL, {
-  headers: {
-    "x-rapidapi-key": "38a13a7d0dmshccf622dd4609bcbp1d0e43jsna16f457d9c68",
-    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    const randomTrack =
-      data.tracks.data[Math.floor(Math.random() * data.tracks.data.length)];
-    console.log(randomTrack);
-    songImg.src = randomTrack.album.cover_xl;
-    songTitle.innerText = randomTrack.title;
-    songArtist.innerText = randomTrack.artist.name;
-
-    return fetch(
-      `https://deezerdevs-deezer.p.rapidapi.com/artist/${randomTrack.artist.id}`,
-      {
-        headers: {
-          "x-rapidapi-key":
-            "38a13a7d0dmshccf622dd4609bcbp1d0e43jsna16f457d9c68",
-          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        },
-      }
-    );
-  })
-  .then((response) => response.json())
-  .then((artistData) => {
-    console.log(artistData);
-    cardImg.src = artistData.picture_big;
-    cardName.innerText = artistData.name;
-    fansText.innerText = artistData.nb_fan;
-    const randomDescription =
-      artistDescriptions[Math.floor(Math.random() * artistDescriptions.length)];
-    artistDesc.textContent = randomDescription;
+    albumInfo.addEventListener("click", function () {
+      const artistId = album.artist.id;
+      window.location.href = `artist.html?artistId=${artistId}`;
+    });
+    artistPic.addEventListener("click", function () {
+      const artistId = album.artist.id;
+      window.location.href = `artist.html?artistId=${artistId}`;
+    });
   });
