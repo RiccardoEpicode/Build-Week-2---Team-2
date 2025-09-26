@@ -19,6 +19,8 @@ async function fetchFromDeezer(endpoint) {
   }
 }
 
+
+
 /* Function to create a card */
 function createMixCard(item) {
   const card = document.createElement("div");
@@ -49,6 +51,8 @@ function createMixCard(item) {
   return card;
 }
 
+
+
 /* Load favorite mixes (using search query) */
 async function loadFavoriteMixes() {
   const mixContainer = document.getElementById("favorite-mixes");
@@ -60,13 +64,19 @@ async function loadFavoriteMixes() {
     </div>
   </div>`;
 
-  const searchHits = await fetchFromDeezer("/search?q=alltimes&limit=10");
+  const searchHits = await fetchFromDeezer("/search?q=techno&limit=10");
 
   if (searchHits && searchHits.data) {
     mixContainer.innerHTML = "";
     searchHits.data.forEach((item) => {
       const card = createMixCard(item);
       mixContainer.appendChild(card);
+      /* passare playlist id al click della card */
+      card.addEventListener("click", () => {
+        const playlistId = item.id;
+        window.location.href = `album.html?playlistId=${playlistId}`;
+
+      });
     });
   } else {
     mixContainer.innerHTML =
@@ -85,13 +95,19 @@ async function loadRecommendedContent() {
     </div>
   </div>`;
 
-  const tracksData = await fetchFromDeezer("/search?q=best&limit=10");
+  const tracksData = await fetchFromDeezer("/search?q=bustarhymes&limit=10");
 
   if (tracksData && tracksData.data) {
     recommendedContainer.innerHTML = "";
     tracksData.data.forEach((track) => {
       const card = createMixCard(track);
       recommendedContainer.appendChild(card);
+      /* passare playlist id al click della card */
+      card.addEventListener("click", () => {
+        const playlistId = track.id;
+        window.location.href = `album.html?playlistId=${playlistId}`;
+  
+      });
     });
   } else {
     recommendedContainer.innerHTML =
