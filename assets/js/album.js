@@ -1,10 +1,13 @@
 // Alan Donati
 const getParams = new URLSearchParams(window.location.search);
 const albumId = getParams.get("albumId");
+const playlistId = getParams.get("playlistId");
+
 const testId = "103248";
 const testId2 = "556294552";
 
 const URL = "https://deezerdevs-deezer.p.rapidapi.com/album/";
+const URLPlaylist = "https://deezerdevs-deezer.p.rapidapi.com/playlist/";
 
 const generalDiv = document.getElementById("album");
 // console.log(generalDiv);
@@ -246,57 +249,114 @@ const averageColor = function (imgElement, callback) {
   callback(`rgb(${r}, ${g}, ${b})`);
 };
 //Album Fetch
-fetch(URL + testId, {
-  method: "GET",
+if (albumId) {
+  fetch(URL + albumId, {
+    method: "GET",
 
-  headers: {
-    "x-rapidapi-key": token,
-    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-  },
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("We got a problem");
-    } else {
-      return response.json();
-    }
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
   })
-  .then((album) => {
-    console.log(album);
-    albumPic.crossOrigin = "anonymous";
-    albumPic.onload = function () {
-      averageColor(albumPic, (color) => {
-        document.documentElement.style.setProperty("--album-color", color);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("We got a problem");
+      } else {
+        return response.json();
+      }
+    })
+    .then((album) => {
+      console.log(album);
+      albumPic.crossOrigin = "anonymous";
+      albumPic.onload = function () {
+        averageColor(albumPic, (color) => {
+          document.documentElement.style.setProperty("--album-color", color);
 
-        const backgroundDiv = document.querySelector(".background-center");
-        backgroundDiv.style.background = `linear-gradient(180deg, ${color} 0%,  #121212 100%)`;
-      });
-    };
-    albumPic.src = album.cover_xl;
-    albumTitle.innerText = album.title;
-    artistPic.src = album.artist.picture_small;
+          const backgroundDiv = document.querySelector(".background-center");
+          backgroundDiv.style.background = `linear-gradient(180deg, ${color} 0%,  #121212 100%)`;
+        });
+      };
+      albumPic.src = album.cover_xl;
+      albumTitle.innerText = album.title;
+      artistPic.src = album.artist.picture_small;
 
-    const duration = album.duration;
+      const duration = album.duration;
 
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration % 60;
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
 
-    artistPic.style.cursor = "pointer";
-    albumInfo.innerHTML = `${
-      album.artist.name
-    } <span>• ${album.release_date.slice(0, 4)}</span> <span>• ${
-      album.nb_tracks
-    } brani,</span>
+      artistPic.style.cursor = "pointer";
+      albumInfo.innerHTML = `${
+        album.artist.name
+      } <span>• ${album.release_date.slice(0, 4)}</span> <span>• ${
+        album.nb_tracks
+      } brani,</span>
                         <span>${minutes} min ${seconds} sec</span>`;
 
-    createTracksLi(album.tracks.data);
+      createTracksLi(album.tracks.data);
 
-    albumInfo.addEventListener("click", function () {
-      const artistId = album.artist.id;
-      window.location.href = `artist.html?artistId=${artistId}`;
+      albumInfo.addEventListener("click", function () {
+        const artistId = album.artist.id;
+        window.location.href = `artist.html?artistId=${artistId}`;
+      });
+      artistPic.addEventListener("click", function () {
+        const artistId = album.artist.id;
+        window.location.href = `artist.html?artistId=${artistId}`;
+      });
     });
-    artistPic.addEventListener("click", function () {
-      const artistId = album.artist.id;
-      window.location.href = `artist.html?artistId=${artistId}`;
+} else if (playlistId) {
+  fetch(URLPlaylist + playlistId, {
+    method: "GET",
+
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("We got a problem");
+      } else {
+        return response.json();
+      }
+    })
+    .then((album) => {
+      console.log(album);
+      albumPic.crossOrigin = "anonymous";
+      albumPic.onload = function () {
+        averageColor(albumPic, (color) => {
+          document.documentElement.style.setProperty("--album-color", color);
+
+          const backgroundDiv = document.querySelector(".background-center");
+          backgroundDiv.style.background = `linear-gradient(180deg, ${color} 0%,  #121212 100%)`;
+        });
+      };
+      albumPic.src = album.cover_xl;
+      albumTitle.innerText = album.title;
+      artistPic.src = album.artist.picture_small;
+
+      const duration = album.duration;
+
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+
+      artistPic.style.cursor = "pointer";
+      albumInfo.innerHTML = `${
+        album.artist.name
+      } <span>• ${album.release_date.slice(0, 4)}</span> <span>• ${
+        album.nb_tracks
+      } brani,</span>
+                        <span>${minutes} min ${seconds} sec</span>`;
+
+      createTracksLi(album.tracks.data);
+
+      albumInfo.addEventListener("click", function () {
+        const artistId = album.artist.id;
+        window.location.href = `artist.html?artistId=${artistId}`;
+      });
+      artistPic.addEventListener("click", function () {
+        const artistId = album.artist.id;
+        window.location.href = `artist.html?artistId=${artistId}`;
+      });
     });
-  });
+}
